@@ -29,7 +29,7 @@ const Content = () => {
 
 const Home = () => (
   <Link to="/modelization/myModelization">
-    <div className="h-screen">
+    <div className="h-4/5">
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5] }}>
         <pointLight color="indianred" />
         <pointLight position={[10, 10, -10]} color="orange" />
