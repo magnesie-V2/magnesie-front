@@ -6,8 +6,8 @@ const Header = () => {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-black px-6 py-3">
-      <div className="flex items-center flex-no-shrink text-white mr-6">
+    <nav className="flex flex-col sm:flex-row items-center justify-between flex-wrap bg-black px-6 py-3">
+      <div className="flex items-center flex-no-shrink text-white mr-6 mb-6 sm:mb-0">
         <img src={logo} alt="Magnesie V2 logo" className="mr-6 w-12 h-12" />
         <span className="font-semibold text-2xl tracking-tight">
           Magnesie V2
