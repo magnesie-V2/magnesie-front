@@ -4,7 +4,7 @@ import Textfield from "../../components/form/Textfield";
 const NewModelization = () => (
   <div className="flex flex-col items-center">
     <p className="text-3xl mt-12">Nouvelle modélisation</p>
-    <form className="w-3/5 xl:w-2/5">
+    <form className="p-4 w:full sm:w-3/5 xl:w-2/5">
       <div className="flex items-center mt-20">
         <p className="text-xl w-1/2 mr-6">Nom de la modélisation</p>
         <Textfield />
