@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/layout/Header";
 import Home from "./pages/home/Home";
 import Modelization from "./pages/modelization/Modelization";
 import NewModelization from "./pages/new-modelization/NewModelization";

@@ -1,6 +1,6 @@
 import { MdHome, MdOutlineAddCircle } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo-white.png";
+import logo from "../../assets/logo-white.png";
 
 const Header = () => {
   const { pathname } = useLocation();
