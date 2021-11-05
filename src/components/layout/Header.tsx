@@ -15,7 +15,7 @@ const Header = () => {
       </div>
       <Link
         to={isHome ? "/new-modelization" : "/"}
-        className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded inline-flex items-center"
+        className="bg-white hover:bg-gray-200 text-black hover:text-black font-bold py-2 px-4 rounded inline-flex items-center"
       >
         {isHome ? (
           <MdOutlineAddCircle className="mr-3" size="26" />

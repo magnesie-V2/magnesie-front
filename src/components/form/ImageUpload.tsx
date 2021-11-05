@@ -1,6 +1,5 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Modal, Upload } from "antd";
-import "antd/dist/antd.css";
 import useImageUpload from "../../hooks/form/useImageUpload";
 
 const ImageUpload = () => {
