@@ -17,6 +17,7 @@ const ImageUpload = () => {
     <>
       <Upload
         multiple
+        accept="image/*"
         listType="picture-card"
         fileList={images}
         onPreview={handleOpenPreview}
