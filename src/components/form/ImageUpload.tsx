@@ -30,6 +30,7 @@ const ImageUpload = () => {
         </div>
       </Upload>
       <Modal
+        centered
         visible={!!previewImage}
         title={previewImageTitle}
         onCancel={handleClosePreview}
