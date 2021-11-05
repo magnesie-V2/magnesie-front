@@ -16,12 +16,12 @@ const NewModelization = () => (
           <Slider />
         </div>
       </div>
-      <div className="border-2 border-black mt-12 sm:mt-20 p-4 rounded">
+      <div className="border-2 border-black mt-12 sm:mt-16 p-4 rounded">
         <ImageUpload />
       </div>
       <button
         type="submit"
-        className="bg-green-700 hover:bg-opacity-80 text-white text-xl font-medium py-2 px-4 rounded w-full mt-12 sm:mt-20"
+        className="bg-green-700 hover:bg-opacity-80 text-white text-xl font-medium py-2 px-4 rounded w-full mt-12"
       >
         Modéliser
       </button>
