@@ -4,8 +4,13 @@ import Textfield from "../../components/form/Textfield";
 import useNewModelization from "../../hooks/form/useNewModelization";
 
 const NewModelization = () => {
-  const { name, greenEnergy, handleNameChange, handleSubmit } =
-    useNewModelization();
+  const {
+    name,
+    greenEnergy,
+    handleNameChange,
+    handleGreenEnergyChange,
+    handleSubmit,
+  } = useNewModelization();
   return (
     <div className="flex flex-col items-center">
       <p className="text-3xl mt-12">Nouvelle modélisation</p>
@@ -17,7 +22,7 @@ const NewModelization = () => {
         <div className="flex items-center mt-12 sm:mt-20">
           <p className="text-xl w-1/2 mr-6">Énergie verte</p>
           <div className="w-1/2 pt-3">
-            <Slider value={greenEnergy} />
+            <Slider value={greenEnergy} onChange={handleGreenEnergyChange} />
           </div>
         </div>
         <div className="border-2 border-black mt-12 sm:mt-16 p-4 rounded">

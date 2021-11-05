@@ -2,6 +2,7 @@ import { Slider as AntSlider } from "antd";
 
 type SliderProps = {
   value: number;
+  onChange: (newValue: number) => void;
 };
 
 const marks = {
@@ -12,14 +13,15 @@ const marks = {
   100: "100%",
 };
 
-const Slider = ({ value }: SliderProps) => (
+const Slider = ({ value, onChange }: SliderProps) => (
   <AntSlider
     marks={marks}
     step={null}
-    value={50}
-    onChange={(event) => console.log(event)}
-    trackStyle={{}}
-    handleStyle={{}}
+    value={value}
+    onChange={onChange}
+    tooltipVisible={false}
+    trackStyle={{ backgroundColor: "#047857" }}
+    handleStyle={{ borderColor: "black" }}
   />
 );
 
