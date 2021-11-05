@@ -7,8 +7,10 @@ const NewModelization = () => {
   const {
     name,
     greenEnergy,
+    images,
     handleNameChange,
     handleGreenEnergyChange,
+    handleImagesChange,
     handleSubmit,
   } = useNewModelization();
   return (
@@ -26,7 +28,10 @@ const NewModelization = () => {
           </div>
         </div>
         <div className="border-2 border-black mt-12 sm:mt-16 p-4 rounded">
-          <ImageUpload />
+          <ImageUpload
+            images={images}
+            handleImagesChange={handleImagesChange}
+          />
         </div>
         <button
           type="submit"

@@ -1,4 +1,3 @@
-import { UploadChangeParam } from "antd/lib/upload";
 import { RcFile, UploadFile } from "antd/lib/upload/interface";
 import { useState } from "react";
 
@@ -12,12 +11,7 @@ const getBase64 = (image: RcFile) => {
 };
 
 const useImageUpload = () => {
-  const [images, setImages] = useState<UploadFile[]>([]);
   const [previewImage, setPreviewImage] = useState<UploadFile | null>(null);
-
-  const handleImagesChange = ({ fileList }: UploadChangeParam<UploadFile>) => {
-    setImages(fileList);
-  };
 
   const handleOpenPreview = async (image: UploadFile) => {
     if (!image.url && !image.preview && image.originFileObj) {
@@ -43,10 +37,8 @@ const useImageUpload = () => {
   };
 
   return {
-    images,
     previewImage,
     previewImageTitle,
-    handleImagesChange,
     handleOpenPreview,
     handleClosePreview,
     customImageUploadRequest,

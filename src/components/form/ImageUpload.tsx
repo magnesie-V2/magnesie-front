@@ -1,18 +1,21 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Modal, Upload } from "antd";
+import { UploadChangeParam, UploadFile } from "antd/lib/upload/interface";
 import useImageUpload from "../../hooks/form/useImageUpload";
 
-const ImageUpload = () => {
+type ImageUploadProps = {
+  images: UploadFile[];
+  handleImagesChange: ({ fileList }: UploadChangeParam<UploadFile>) => void;
+};
+
+const ImageUpload = ({ images, handleImagesChange }: ImageUploadProps) => {
   const {
-    images,
     previewImage,
     previewImageTitle,
-    handleImagesChange,
     handleOpenPreview,
     handleClosePreview,
     customImageUploadRequest,
   } = useImageUpload();
-
   return (
     <>
       <Upload
