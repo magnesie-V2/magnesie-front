@@ -16,3 +16,13 @@ export const postNewModelizationForm = ({
     }, 1000);
   });
 };
+
+export const getModelization = (modelizationID: string) => {
+  console.log(modelizationID);
+  return new Promise<Modelization>((resolve, reject) =>
+    setTimeout(() => {
+      reject();
+      // resolve({ name: "Donuts" });
+    }, 5000)
+  );
+};

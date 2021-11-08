@@ -1,0 +1,3 @@
+type Modelization = {
+  name: string;
+};

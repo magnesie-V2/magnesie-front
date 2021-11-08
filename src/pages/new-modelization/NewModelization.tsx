@@ -1,6 +1,6 @@
 import ImageUpload from "../../components/new-modelization/ImageUpload";
 import Slider from "../../components/new-modelization/Slider";
-import Spinner from "../../components/new-modelization/Spinner";
+import SubmitButton from "../../components/new-modelization/SubmitButton";
 import Textfield from "../../components/new-modelization/Textfield";
 import useNewModelization from "../../hooks/new-modelization/useNewModelization";
 
@@ -35,13 +35,7 @@ const NewModelization = () => {
             handleImagesChange={handleImagesChange}
           />
         </div>
-        <button
-          type="submit"
-          disabled={isSendingForm}
-          className="bg-green-700 hover:bg-opacity-80 text-white text-xl font-medium py-2 px-4 rounded w-full mt-12 disabled:cursor-default"
-        >
-          {isSendingForm ? <Spinner /> : "Modéliser"}
-        </button>
+        <SubmitButton isDisabled={isSendingForm} />
       </form>
     </div>
   );
