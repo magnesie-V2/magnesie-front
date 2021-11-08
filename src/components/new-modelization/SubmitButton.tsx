@@ -1,4 +1,4 @@
-import { LoadingOutlined } from "@ant-design/icons";
+import { CodeSandboxOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
 
 type SubmitButtonProps = {
@@ -14,7 +14,11 @@ const SubmitButton = ({ isDisabled }: SubmitButtonProps) => (
     {isDisabled ? (
       <Spin
         indicator={
-          <LoadingOutlined className="text-white" style={{ fontSize: 30 }} />
+          <CodeSandboxOutlined
+            spin
+            className="text-white"
+            style={{ fontSize: 30 }}
+          />
         }
       />
     ) : (
