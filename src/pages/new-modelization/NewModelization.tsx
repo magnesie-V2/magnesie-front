@@ -1,5 +1,6 @@
 import ImageUpload from "../../components/form/ImageUpload";
 import Slider from "../../components/form/Slider";
+import Spinner from "../../components/form/Spinner";
 import Textfield from "../../components/form/Textfield";
 import useNewModelization from "../../hooks/form/useNewModelization";
 
@@ -8,6 +9,7 @@ const NewModelization = () => {
     name,
     greenEnergy,
     images,
+    isSendingForm,
     handleNameChange,
     handleGreenEnergyChange,
     handleImagesChange,
@@ -35,9 +37,10 @@ const NewModelization = () => {
         </div>
         <button
           type="submit"
-          className="bg-green-700 hover:bg-opacity-80 text-white text-xl font-medium py-2 px-4 rounded w-full mt-12"
+          disabled={isSendingForm}
+          className="bg-green-700 hover:bg-opacity-80 text-white text-xl font-medium py-2 px-4 rounded w-full mt-12 disabled:cursor-default"
         >
-          Modéliser
+          {isSendingForm ? <Spinner /> : "Modéliser"}
         </button>
       </form>
     </div>
