@@ -1,7 +1,7 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Modal, Upload } from "antd";
 import { UploadChangeParam, UploadFile } from "antd/lib/upload/interface";
-import useImageUpload from "../../hooks/form/useImageUpload";
+import useImageUpload from "../../hooks/new-modelization/useImageUpload";
 
 type ImageUploadProps = {
   images: UploadFile[];

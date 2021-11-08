@@ -1,8 +1,8 @@
-import ImageUpload from "../../components/form/ImageUpload";
-import Slider from "../../components/form/Slider";
-import Spinner from "../../components/form/Spinner";
-import Textfield from "../../components/form/Textfield";
-import useNewModelization from "../../hooks/form/useNewModelization";
+import ImageUpload from "../../components/new-modelization/ImageUpload";
+import Slider from "../../components/new-modelization/Slider";
+import Spinner from "../../components/new-modelization/Spinner";
+import Textfield from "../../components/new-modelization/Textfield";
+import useNewModelization from "../../hooks/new-modelization/useNewModelization";
 
 const NewModelization = () => {
   const {
