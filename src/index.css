@@ -9,3 +9,24 @@ body {
 #root {
   height: 100%;
 }
+
+.ant-slider-dot-active {
+  border-color: #047857;
+}
+
+.ant-slider-handle:focus {
+  box-shadow: 0 0 0 5px rgb(4 120 87 / 12%);
+}
+
+.ant-message-custom-content {
+  display: flex;
+  align-items: center;
+}
+
+.ant-btn-icon-only {
+  vertical-align: -5px;
+}
+
+.ant-upload.ant-upload-select-picture-card:hover {
+  border-color: #047857;
+}
