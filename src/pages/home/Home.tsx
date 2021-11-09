@@ -26,7 +26,8 @@ const Content = () => {
     </group>
   );
 };
-
+//https://threejs.org/examples/webgl_interactive_cubes_ortho.html
+//https://threejs.org/examples/webgl_interactive_cubes.html
 const Home = () => (
   <Link to="/modelization/myModelization">
     <div className="h-4/5">

@@ -21,10 +21,10 @@ export const getModelization = (modelizationID: string) => {
   console.log(modelizationID);
   return new Promise<Modelization>((resolve, reject) =>
     setTimeout(() => {
-      reject(
-        "Corrupted 3D modelization, see https://corrupted-3d-modelization for more informations"
-      );
-      // resolve({ name: "Donuts" });
-    }, 10)
+      // reject(
+      //   "Corrupted 3D modelization, see https://corrupted-3d-modelization for more informations"
+      // );
+      resolve({ name: "Donuts" });
+    }, 500)
   );
 };
