@@ -17,7 +17,7 @@ export const postNewModelizationForm = ({
   });
 };
 
-export const getModelization = (modelizationID: string) => {
+export const getModelization = (modelizationID: string | undefined) => {
   console.log(modelizationID);
   return new Promise<Modelization>((resolve, reject) =>
     setTimeout(() => {

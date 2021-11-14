@@ -1,9 +1,9 @@
 import { useQuery } from "react-query";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { getModelization } from "../../services/services";
 
 const useModelization = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const {
     data: modelization,
     isLoading,
