@@ -8,15 +8,9 @@ const App = () => (
   <BrowserRouter>
     <Header />
     <Routes>
-      <Route path="/new-modelization">
-        <NewModelization />
-      </Route>
-      <Route path="/modelization/:id">
-        <Modelization />
-      </Route>
-      <Route path="*">
-        <Home />
-      </Route>
+      <Route path="/new-modelization" element={<NewModelization />} />
+      <Route path="/modelization/:id" element={<Modelization />} />
+      <Route path="*" element={<Home />} />
     </Routes>
   </BrowserRouter>
 );
