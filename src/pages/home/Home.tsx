@@ -2,13 +2,6 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-const Dodecahedron = ({ position }: { position: number[] }) => (
-  <mesh position={position}>
-    <dodecahedronBufferGeometry />
-    <meshStandardMaterial roughness={0.75} emissive="#404057" />
-  </mesh>
-);
-
 const Content = () => {
   const ref = useRef<any>();
   useFrame(
@@ -20,9 +13,18 @@ const Content = () => {
   );
   return (
     <group ref={ref}>
-      <Dodecahedron position={[-2, 0, 0]} />
-      <Dodecahedron position={[0, -2, -3]} />
-      <Dodecahedron position={[2, 0, 0]} />
+      <mesh position={[-2, 0, 0]}>
+        <dodecahedronBufferGeometry />
+        <meshStandardMaterial roughness={0.75} emissive="#404057" />
+      </mesh>
+      <mesh position={[0, -2, -3]}>
+        <torusKnotGeometry args={[1, 0.2, 32, 100]} />
+        <meshStandardMaterial roughness={0.75} emissive="#404057" />
+      </mesh>
+      <mesh position={[2, 0, 0]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial roughness={0.75} emissive="#404057" />
+      </mesh>
     </group>
   );
 };
