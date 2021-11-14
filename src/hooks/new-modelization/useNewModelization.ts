@@ -15,13 +15,13 @@ const useNewModelization = () => {
     postNewModelizationForm,
     {
       onSuccess: () => {
-        message.success("La modélisation a bien été lancée");
+        message.success("La modélisation a bien été lancée", 1.5);
         setName("");
         setGreenEnergy(INITIAL_GREEN_ENERGY);
         setImages([]);
       },
       onError: () => {
-        message.error("Une erreur est survenue, veuillez réessayer");
+        message.error("Une erreur est survenue, veuillez réessayer", 1.5);
       },
     }
   );
@@ -44,7 +44,8 @@ const useNewModelization = () => {
       sendForm({ name, greenEnergy, images });
     } else {
       message.error(
-        "Au moins une image est nécessaire pour réaliser une modélisation"
+        "Au moins une image est nécessaire pour réaliser une modélisation",
+        1.5
       );
     }
   };
