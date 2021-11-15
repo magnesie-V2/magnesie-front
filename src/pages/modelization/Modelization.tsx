@@ -29,7 +29,7 @@ const Modelization = () => {
     <div className="flex flex-col items-center h-5/6">
       <p className="text-3xl mt-8">{modelization?.name}</p>
       <div className="h-3/5 w-3/4 xl:w-4/6 mt-8 rounded-xl bg-gray-200 relative">
-        <ModelizationDisplay />
+        <ModelizationDisplay isAutoRotateOn={isAutoRotateOn} />
         <ModelizationControls
           isAutoRotateOn={isAutoRotateOn}
           toggleAutoRotate={toggleAutoRotate}
