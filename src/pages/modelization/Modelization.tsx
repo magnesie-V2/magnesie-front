@@ -16,7 +16,6 @@ const Modelization = () => {
   }
 
   // change styles (height rules)
-  //https://osorina.github.io/3d-headphones/
   return (
     <div className="flex flex-col items-center h-5/6">
       <p className="text-3xl mt-8">{modelization?.name}</p>
