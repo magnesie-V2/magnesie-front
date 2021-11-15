@@ -1,6 +1,7 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
+//https://osorina.github.io/3d-headphones/
 const ModelizationDisplay = () => (
   <div className="h-3/5 w-3/4 xl:w-4/6 mt-8 rounded-xl bg-gray-200 relative">
     <Canvas orthographic camera={{ zoom: 75 }}>
