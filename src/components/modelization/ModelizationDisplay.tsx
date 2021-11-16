@@ -15,6 +15,7 @@ const ModelizationDisplay = ({ isAutoRotateOn }: ModelizationDisplayProps) => (
     <OrbitControls
       minZoom={50}
       maxZoom={500}
+      enablePan={false}
       autoRotate={isAutoRotateOn}
       autoRotateSpeed={4}
     />
