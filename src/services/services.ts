@@ -24,7 +24,11 @@ export const getModelization = (modelizationID: string | undefined) => {
       // reject(
       //   "Corrupted 3D modelization, see https://corrupted-3d-modelization for more informations"
       // );
-      resolve({ name: "Donuts" });
+      resolve({
+        name: "Chateau de Sceaux",
+        modelPath: "/chateau.ply",
+        texturePath: "/chateau.png",
+      });
     }, 500)
   );
 };

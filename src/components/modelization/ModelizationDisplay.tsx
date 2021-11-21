@@ -1,16 +1,26 @@
-import { OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import TexturedPlyModel from "./TexturedPlyModel";
 
 type ModelizationDisplayProps = {
+  modelPath: string;
+  texturePath: string;
   isAutoRotateOn: boolean;
 };
 
-const ModelizationDisplay = ({ isAutoRotateOn }: ModelizationDisplayProps) => (
-  <Canvas orthographic camera={{ zoom: 75 }}>
-    <mesh>
-      <torusGeometry args={[1, 0.5, 32, 100]} />
-      <meshNormalMaterial />
-    </mesh>
+// customize loading message
+// algo ratio zoom taille
+const ModelizationDisplay = ({
+  modelPath,
+  texturePath,
+  isAutoRotateOn,
+}: ModelizationDisplayProps) => (
+  <Canvas orthographic camera={{ zoom: 250 }}>
+    <ambientLight intensity={1} />
+    <Suspense fallback={<Html center>Loading ...</Html>}>
+      <TexturedPlyModel modelPath={modelPath} texturePath={texturePath} />
+    </Suspense>
     {/*// @ts-ignore */}
     <OrbitControls
       minZoom={50}
