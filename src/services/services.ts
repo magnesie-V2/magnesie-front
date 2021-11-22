@@ -1,4 +1,5 @@
 import { UploadFile } from "antd/lib/upload/interface";
+import axios from "axios";
 
 export const postNewModelizationForm = ({
   name,
@@ -9,11 +10,14 @@ export const postNewModelizationForm = ({
   greenEnergy: number;
   images: UploadFile[];
 }) => {
-  console.log(name, greenEnergy, images);
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      Math.round(Math.random()) === 0 ? resolve("OK") : reject();
-    }, 1000);
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("greenEnergy", greenEnergy.toString());
+  images.forEach((image) =>
+    formData.append("photos", image.originFileObj as Blob)
+  );
+  return axios.post("http://localhost:7880/submit", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
   });
 };
 

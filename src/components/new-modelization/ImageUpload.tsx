@@ -20,7 +20,7 @@ const ImageUpload = ({ images, handleImagesChange }: ImageUploadProps) => {
     <>
       <Upload
         multiple
-        accept="image/*"
+        accept="mage/jpg, image/jpeg"
         listType="picture-card"
         fileList={images}
         onPreview={handleOpenPreview}
