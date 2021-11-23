@@ -1,5 +1,4 @@
 import { BiReset } from "react-icons/bi";
-import { GiWireframeGlobe } from "react-icons/gi";
 import { MdDownload } from "react-icons/md";
 import { RiRestartLine, RiRotateLockFill } from "react-icons/ri";
 
@@ -7,12 +6,14 @@ type ModelizationControlsProps = {
   isAutoRotateOn: boolean;
   toggleAutoRotate: () => void;
   resetOrbitPosition: () => void;
+  exportModel: () => void;
 };
 
 const ModelizationControls = ({
   isAutoRotateOn,
   toggleAutoRotate,
   resetOrbitPosition,
+  exportModel,
 }: ModelizationControlsProps) => (
   <div className="flex absolute bottom-0 right-0">
     <button
@@ -31,10 +32,10 @@ const ModelizationControls = ({
     >
       <BiReset size="22" />
     </button>
-    <button className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2">
-      <GiWireframeGlobe size="22" />
-    </button>
-    <button className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2">
+    <button
+      onClick={exportModel}
+      className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
+    >
       <MdDownload size="22" />
     </button>
   </div>

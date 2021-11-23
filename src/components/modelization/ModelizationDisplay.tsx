@@ -1,9 +1,9 @@
-import { Html, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
 import TexturedPlyModel from "./TexturedPlyModel";
 
 type ModelizationDisplayProps = {
+  modelRef: any;
   orbitRef: any;
   modelPath: string;
   texturePath: string;
@@ -14,6 +14,7 @@ type ModelizationDisplayProps = {
 // algo ratio zoom taille
 // 360 rotation
 const ModelizationDisplay = ({
+  modelRef,
   orbitRef,
   modelPath,
   texturePath,
@@ -21,9 +22,11 @@ const ModelizationDisplay = ({
 }: ModelizationDisplayProps) => (
   <Canvas orthographic camera={{ zoom: 250 }}>
     <ambientLight intensity={1} />
-    <Suspense fallback={<Html center>Loading ...</Html>}>
-      <TexturedPlyModel modelPath={modelPath} texturePath={texturePath} />
-    </Suspense>
+    <TexturedPlyModel
+      modelRef={modelRef}
+      modelPath={modelPath}
+      texturePath={texturePath}
+    />
     {/*// @ts-ignore */}
     <OrbitControls
       ref={orbitRef}
