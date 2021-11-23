@@ -18,6 +18,7 @@ const Modelization = () => {
     resetOrbitPosition,
     modelRef,
     exportModel,
+    horizontalHalfRotation,
   } = useModelization();
 
   if (isLoading) {
@@ -54,6 +55,7 @@ const Modelization = () => {
             toggleAutoRotate={toggleAutoRotate}
             resetOrbitPosition={resetOrbitPosition}
             exportModel={exportModel}
+            horizontalHalfRotation={horizontalHalfRotation}
           />
         </Suspense>
       </div>

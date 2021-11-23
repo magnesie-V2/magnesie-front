@@ -1,12 +1,15 @@
 import { BiReset } from "react-icons/bi";
+import { CgArrowAlignV } from "react-icons/cg";
 import { MdDownload } from "react-icons/md";
 import { RiRestartLine, RiRotateLockFill } from "react-icons/ri";
+import Tooltip from "../shared/Tooltip";
 
 type ModelizationControlsProps = {
   isAutoRotateOn: boolean;
   toggleAutoRotate: () => void;
   resetOrbitPosition: () => void;
   exportModel: () => void;
+  horizontalHalfRotation: () => void;
 };
 
 const ModelizationControls = ({
@@ -14,30 +17,49 @@ const ModelizationControls = ({
   toggleAutoRotate,
   resetOrbitPosition,
   exportModel,
+  horizontalHalfRotation,
 }: ModelizationControlsProps) => (
   <div className="flex absolute bottom-0 right-0">
-    <button
-      onClick={toggleAutoRotate}
-      className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
+    <Tooltip
+      text={`${
+        isAutoRotateOn ? "Désactiver" : "Activer"
+      } la rotation automatique`}
     >
-      {isAutoRotateOn ? (
-        <RiRotateLockFill size="22" />
-      ) : (
-        <RiRestartLine size="22" />
-      )}
-    </button>
-    <button
-      onClick={resetOrbitPosition}
-      className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
-    >
-      <BiReset size="22" />
-    </button>
-    <button
-      onClick={exportModel}
-      className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
-    >
-      <MdDownload size="22" />
-    </button>
+      <button
+        onClick={toggleAutoRotate}
+        className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
+      >
+        {isAutoRotateOn ? (
+          <RiRotateLockFill size="22" />
+        ) : (
+          <RiRestartLine size="22" />
+        )}
+      </button>
+    </Tooltip>
+    <Tooltip text="Réinitialiser la position de la caméra">
+      <button
+        onClick={resetOrbitPosition}
+        className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
+      >
+        <BiReset size="22" />
+      </button>
+    </Tooltip>
+    <Tooltip text="Demi rotation sur l'axe X">
+      <button
+        onClick={horizontalHalfRotation}
+        className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
+      >
+        <CgArrowAlignV size="22" />
+      </button>
+    </Tooltip>
+    <Tooltip text="Télécharger le modèle 3D">
+      <button
+        onClick={exportModel}
+        className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
+      >
+        <MdDownload size="22" />
+      </button>
+    </Tooltip>
   </div>
 );
 

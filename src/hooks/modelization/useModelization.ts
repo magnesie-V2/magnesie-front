@@ -28,6 +28,9 @@ const useModelization = () => {
   };
 
   const modelRef = useRef<any>();
+  const horizontalHalfRotation = () => {
+    modelRef.current.rotation.x += Math.PI;
+  };
   const exportModel = () => {
     const exporter = new PLYExporter();
     exporter.parse(modelRef.current, (result: BlobPart) => {
@@ -53,6 +56,7 @@ const useModelization = () => {
     resetOrbitPosition,
     modelRef,
     exportModel,
+    horizontalHalfRotation,
   };
 };
 
