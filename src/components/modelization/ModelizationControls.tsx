@@ -6,11 +6,13 @@ import { RiRestartLine, RiRotateLockFill } from "react-icons/ri";
 type ModelizationControlsProps = {
   isAutoRotateOn: boolean;
   toggleAutoRotate: () => void;
+  resetOrbitPosition: () => void;
 };
 
 const ModelizationControls = ({
   isAutoRotateOn,
   toggleAutoRotate,
+  resetOrbitPosition,
 }: ModelizationControlsProps) => (
   <div className="flex absolute bottom-0 right-0">
     <button
@@ -23,7 +25,10 @@ const ModelizationControls = ({
         <RiRestartLine size="22" />
       )}
     </button>
-    <button className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2">
+    <button
+      onClick={resetOrbitPosition}
+      className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
+    >
       <BiReset size="22" />
     </button>
     <button className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2">

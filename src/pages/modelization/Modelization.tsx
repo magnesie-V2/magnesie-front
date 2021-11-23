@@ -13,6 +13,8 @@ const Modelization = () => {
     refetch,
     isAutoRotateOn,
     toggleAutoRotate,
+    orbitRef,
+    resetOrbitPosition,
   } = useModelization();
 
   if (isLoading) {
@@ -31,6 +33,7 @@ const Modelization = () => {
       <p className="text-3xl mt-8">{name}</p>
       <div className="h-3/5 w-5/6 sm:w-3/4 xl:w-4/6 mt-8 rounded-xl bg-gray-200 relative">
         <ModelizationDisplay
+          orbitRef={orbitRef}
           modelPath={modelPath}
           texturePath={texturePath}
           isAutoRotateOn={isAutoRotateOn}
@@ -38,6 +41,7 @@ const Modelization = () => {
         <ModelizationControls
           isAutoRotateOn={isAutoRotateOn}
           toggleAutoRotate={toggleAutoRotate}
+          resetOrbitPosition={resetOrbitPosition}
         />
       </div>
     </div>

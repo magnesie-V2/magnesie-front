@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import TexturedPlyModel from "./TexturedPlyModel";
 
 type ModelizationDisplayProps = {
+  orbitRef: any;
   modelPath: string;
   texturePath: string;
   isAutoRotateOn: boolean;
@@ -11,7 +12,9 @@ type ModelizationDisplayProps = {
 
 // customize loading message
 // algo ratio zoom taille
+// 360 rotation
 const ModelizationDisplay = ({
+  orbitRef,
   modelPath,
   texturePath,
   isAutoRotateOn,
@@ -23,6 +26,7 @@ const ModelizationDisplay = ({
     </Suspense>
     {/*// @ts-ignore */}
     <OrbitControls
+      ref={orbitRef}
       minZoom={50}
       maxZoom={500}
       enablePan={false}

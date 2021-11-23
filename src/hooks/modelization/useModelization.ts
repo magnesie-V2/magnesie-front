@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { getModelization } from "../../services/services";
@@ -18,6 +18,13 @@ const useModelization = () => {
     setIsAutoRotateOn(!isAutoRotateOn);
   };
 
+  const orbitRef = useRef<any>();
+  const resetOrbitPosition = () => {
+    if (orbitRef.current) {
+      orbitRef.current.reset();
+    }
+  };
+
   return {
     modelization,
     isLoading,
@@ -26,6 +33,8 @@ const useModelization = () => {
     refetch,
     isAutoRotateOn,
     toggleAutoRotate,
+    orbitRef,
+    resetOrbitPosition,
   };
 };
 
