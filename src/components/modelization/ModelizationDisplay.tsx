@@ -10,7 +10,6 @@ type ModelizationDisplayProps = {
   isAutoRotateOn: boolean;
 };
 
-// customize loading message
 // algo ratio zoom taille
 // 360 rotation
 const ModelizationDisplay = ({

@@ -31,9 +31,17 @@ const Modelization = () => {
   const { name, modelPath, texturePath } = modelization as Modelization;
   return (
     <div className="flex flex-col items-center h-5/6">
-      <p className="text-3xl mt-8">{name}</p>
+      <p className="text-3xl mt-8 text-center px-4">{name}</p>
       <div className="h-3/5 w-5/6 sm:w-3/4 xl:w-4/6 mt-8 rounded-xl bg-gray-200 relative">
-        <Suspense fallback={<p>Loading ...</p>}>
+        <Suspense
+          fallback={
+            <div className="h-full flex justify-center items-center">
+              <p className="animate-pulse text-3xl px-8 text-center">
+                Chargement du modèle 3D
+              </p>
+            </div>
+          }
+        >
           <ModelizationDisplay
             modelRef={modelRef}
             orbitRef={orbitRef}
