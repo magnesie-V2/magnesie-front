@@ -30,7 +30,6 @@ export const postNewModelizationForm = ({
 };
 
 export const getModelization = (modelizationID: string | undefined) => {
-  console.log(modelizationID);
   return new Promise<Modelization>((resolve, reject) =>
     setTimeout(() => {
       // reject(
@@ -43,10 +42,16 @@ export const getModelization = (modelizationID: string | undefined) => {
       //   texturePath:
       //     "http://0.0.0.0:7881/files/results/1/scene_dense_mesh_refine_texture.png",
       // });
+      let folder =
+        modelizationID === "bronze_sculpture" ||
+        modelizationID === "climbing_wall"
+          ? modelizationID
+          : "castle";
       resolve({
-        name: "Chateau de Sceaux",
-        modelPath: "/chateau.ply",
-        texturePath: "/chateau.png",
+        name: modelizationID as string,
+        modelPath: "/models/" + folder + "/scene_dense_mesh_refine_texture.ply",
+        texturePath:
+          "/models/" + folder + "/scene_dense_mesh_refine_texture.png",
       });
     }, 500)
   );
