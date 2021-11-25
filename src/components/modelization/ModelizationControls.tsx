@@ -1,5 +1,4 @@
 import { BiReset } from "react-icons/bi";
-import { CgArrowAlignV } from "react-icons/cg";
 import { MdDownload } from "react-icons/md";
 import { RiRestartLine, RiRotateLockFill } from "react-icons/ri";
 import Tooltip from "../shared/Tooltip";
@@ -9,7 +8,6 @@ type ModelizationControlsProps = {
   toggleAutoRotate: () => void;
   resetOrbitPosition: () => void;
   exportModel: () => void;
-  horizontalHalfRotation: () => void;
 };
 
 const ModelizationControls = ({
@@ -17,7 +15,6 @@ const ModelizationControls = ({
   toggleAutoRotate,
   resetOrbitPosition,
   exportModel,
-  horizontalHalfRotation,
 }: ModelizationControlsProps) => (
   <div className="flex absolute bottom-0 right-0">
     <Tooltip
@@ -42,14 +39,6 @@ const ModelizationControls = ({
         className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
       >
         <BiReset size="22" />
-      </button>
-    </Tooltip>
-    <Tooltip text="Demi rotation sur l'axe X">
-      <button
-        onClick={horizontalHalfRotation}
-        className="flex items-center justify-center bg-white rounded-full w-12 h-12 m-2"
-      >
-        <CgArrowAlignV size="22" />
       </button>
     </Tooltip>
     <Tooltip text="Télécharger le modèle 3D">

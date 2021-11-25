@@ -1,7 +1,4 @@
-import { useTexture } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
-// @ts-ignore
-import { PLYLoader } from "three/examples/jsm/loaders/PLYLoader";
+import useTexturedPlyModel from "../../hooks/modelization/useTexturedPlyModel";
 
 type TexturedPlyModelProps = {
   modelRef: any;
@@ -14,8 +11,11 @@ const TexturedPlyModel = ({
   modelPath,
   texturePath,
 }: TexturedPlyModelProps) => {
-  const ply = useLoader(PLYLoader, modelPath);
-  const texture = useTexture(texturePath);
+  const { ply, texture } = useTexturedPlyModel(
+    modelRef,
+    modelPath,
+    texturePath
+  );
   return (
     <mesh ref={modelRef} geometry={ply}>
       <meshStandardMaterial map={texture} flatShading />
