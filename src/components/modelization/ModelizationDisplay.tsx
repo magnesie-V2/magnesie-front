@@ -11,7 +11,6 @@ type ModelizationDisplayProps = {
 };
 
 // algo ratio zoom taille
-// 360 rotation
 const ModelizationDisplay = ({
   modelRef,
   orbitRef,

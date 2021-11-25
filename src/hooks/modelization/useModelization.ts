@@ -29,19 +29,23 @@ const useModelization = () => {
 
   const modelRef = useRef<any>();
   const horizontalHalfRotation = () => {
-    modelRef.current.rotation.x += Math.PI;
+    if (modelRef.current) {
+      modelRef.current.rotation.x += Math.PI;
+    }
   };
   const exportModel = () => {
-    const exporter = new PLYExporter();
-    exporter.parse(modelRef.current, (result: BlobPart) => {
-      const link = document.createElement("a");
-      link.style.display = "none";
-      document.body.appendChild(link);
-      const blob = new Blob([result], { type: "result/plain" });
-      link.href = URL.createObjectURL(blob);
-      link.download = modelization?.name + ".ply";
-      link.click();
-    });
+    if (modelRef.current) {
+      const exporter = new PLYExporter();
+      exporter.parse(modelRef.current, (result: BlobPart) => {
+        const link = document.createElement("a");
+        link.style.display = "none";
+        document.body.appendChild(link);
+        const blob = new Blob([result], { type: "result/plain" });
+        link.href = URL.createObjectURL(blob);
+        link.download = modelization?.name + ".ply";
+        link.click();
+      });
+    }
   };
 
   return {
