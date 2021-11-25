@@ -16,8 +16,16 @@ export const postNewModelizationForm = ({
   images.forEach((image) =>
     formData.append("photos", image.originFileObj as Blob)
   );
-  return axios.post("http://localhost:7880/submit", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return new Promise((resolve, reject) => {
+    axios
+      .post("http://localhost:7880/submit", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => {
+        const submissionID = response.data;
+        resolve(submissionID);
+      })
+      .catch(() => reject());
   });
 };
 
@@ -28,6 +36,13 @@ export const getModelization = (modelizationID: string | undefined) => {
       // reject(
       //   "Corrupted 3D modelization, see https://corrupted-3d-modelization for more informations"
       // );
+      // resolve({
+      //   name: "Chateau de Sceaux",
+      //   modelPath:
+      //     "http://0.0.0.0:7881/files/results/1/scene_dense_mesh_refine_texture.ply",
+      //   texturePath:
+      //     "http://0.0.0.0:7881/files/results/1/scene_dense_mesh_refine_texture.png",
+      // });
       resolve({
         name: "Chateau de Sceaux",
         modelPath: "/chateau.ply",
