@@ -15,7 +15,7 @@ const useModelization = () => {
     refetch,
   } = useQuery<Modelization>(["modelization", id], () => getModelization(id));
 
-  const [isAutoRotateOn, setIsAutoRotateOn] = useState(true);
+  const [isAutoRotateOn, setIsAutoRotateOn] = useState(false);
   const toggleAutoRotate = () => {
     setIsAutoRotateOn(!isAutoRotateOn);
   };
