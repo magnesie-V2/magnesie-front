@@ -10,7 +10,6 @@ type ModelizationDisplayProps = {
   isAutoRotateOn: boolean;
 };
 
-// algo ratio zoom taille
 const ModelizationDisplay = ({
   modelRef,
   orbitRef,
@@ -18,7 +17,7 @@ const ModelizationDisplay = ({
   texturePath,
   isAutoRotateOn,
 }: ModelizationDisplayProps) => (
-  <Canvas orthographic camera={{ zoom: 250 }}>
+  <Canvas orthographic>
     <ambientLight intensity={1} />
     <TexturedPlyModel
       modelRef={modelRef}
@@ -28,8 +27,6 @@ const ModelizationDisplay = ({
     {/*// @ts-ignore */}
     <OrbitControls
       ref={orbitRef}
-      minZoom={50}
-      maxZoom={500}
       enablePan={false}
       autoRotate={isAutoRotateOn}
       autoRotateSpeed={4}
