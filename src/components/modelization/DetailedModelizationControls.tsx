@@ -3,19 +3,19 @@ import { MdDownload } from "react-icons/md";
 import { RiRestartLine, RiRotateLockFill } from "react-icons/ri";
 import Tooltip from "../shared/Tooltip";
 
-type ModelizationControlsProps = {
+type DetailedModelizationControlsProps = {
   isAutoRotateOn: boolean;
   toggleAutoRotate: () => void;
   resetOrbitPosition: () => void;
   exportModel: () => void;
 };
 
-const ModelizationControls = ({
+const DetailedModelizationControls = ({
   isAutoRotateOn,
   toggleAutoRotate,
   resetOrbitPosition,
   exportModel,
-}: ModelizationControlsProps) => (
+}: DetailedModelizationControlsProps) => (
   <div className="flex absolute bottom-0 right-0">
     <Tooltip
       text={`${
@@ -52,4 +52,4 @@ const ModelizationControls = ({
   </div>
 );
 
-export default ModelizationControls;
+export default DetailedModelizationControls;

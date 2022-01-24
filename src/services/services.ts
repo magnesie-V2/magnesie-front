@@ -1,6 +1,10 @@
 import { UploadFile } from "antd/lib/upload/interface";
 import axios from "axios";
 
+const FOLDER = "/models";
+const PLY_FILE = "scene_dense_mesh_refine_texture.ply";
+const PNG_FILE = "scene_dense_mesh_refine_texture.png";
+
 export const postNewModelizationForm = ({
   name,
   greenEnergy,
@@ -30,11 +34,8 @@ export const postNewModelizationForm = ({
 };
 
 export const getModelization = (modelizationID: string | undefined) => {
-  return new Promise<Modelization>((resolve, reject) =>
+  return new Promise<Modelization>((resolve) =>
     setTimeout(() => {
-      // reject(
-      //   "Corrupted 3D modelization, see https://corrupted-3d-modelization for more informations"
-      // );
       // resolve({
       //   name: "Chateau de Sceaux",
       //   modelPath:
@@ -42,17 +43,40 @@ export const getModelization = (modelizationID: string | undefined) => {
       //   texturePath:
       //     "http://0.0.0.0:7881/files/results/1/scene_dense_mesh_refine_texture.png",
       // });
-      let folder =
+      let object =
         modelizationID === "bronze_sculpture" ||
         modelizationID === "climbing_wall"
           ? modelizationID
           : "castle";
       resolve({
         name: modelizationID as string,
-        modelPath: "/models/" + folder + "/scene_dense_mesh_refine_texture.ply",
-        texturePath:
-          "/models/" + folder + "/scene_dense_mesh_refine_texture.png",
+        modelPath: `${FOLDER}/${object}/${PLY_FILE}`,
+        texturePath: `${FOLDER}/${object}/${PNG_FILE}`,
       });
+    }, 500)
+  );
+};
+
+export const getModelizations = () => {
+  return new Promise<Modelization[]>((resolve) =>
+    setTimeout(() => {
+      resolve([
+        {
+          name: "Castle",
+          modelPath: `${FOLDER}/castle/${PLY_FILE}`,
+          texturePath: `${FOLDER}/castle/${PNG_FILE}`,
+        },
+        {
+          name: "Bronze Sculpture",
+          modelPath: `${FOLDER}/bronze_sculpture/${PLY_FILE}`,
+          texturePath: `${FOLDER}/bronze_sculpture/${PNG_FILE}`,
+        },
+        {
+          name: "Climbing wall",
+          modelPath: `${FOLDER}/climbing_wall/${PLY_FILE}`,
+          texturePath: `${FOLDER}/climbing_wall/${PNG_FILE}`,
+        },
+      ]);
     }, 500)
   );
 };

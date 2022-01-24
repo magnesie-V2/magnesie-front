@@ -2,7 +2,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import TexturedPlyModel from "./TexturedPlyModel";
 
-type ModelizationDisplayProps = {
+type DetailedModelizationDisplayProps = {
   modelRef: any;
   orbitRef: any;
   modelPath: string;
@@ -10,16 +10,17 @@ type ModelizationDisplayProps = {
   isAutoRotateOn: boolean;
 };
 
-const ModelizationDisplay = ({
+const DetailedModelizationDisplay = ({
   modelRef,
   orbitRef,
   modelPath,
   texturePath,
   isAutoRotateOn,
-}: ModelizationDisplayProps) => (
+}: DetailedModelizationDisplayProps) => (
   <Canvas orthographic>
     <ambientLight intensity={1} />
     <TexturedPlyModel
+      scaleToScreen
       modelRef={modelRef}
       modelPath={modelPath}
       texturePath={texturePath}
@@ -34,4 +35,4 @@ const ModelizationDisplay = ({
   </Canvas>
 );
 
-export default ModelizationDisplay;
+export default DetailedModelizationDisplay;

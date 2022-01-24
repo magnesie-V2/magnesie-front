@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import ModelizationControls from "../../components/modelization/ModelizationControls";
-import ModelizationDisplay from "../../components/modelization/ModelizationDisplay";
+import DetailedModelizationControls from "../../components/modelization/DetailedModelizationControls";
+import DetailedModelizationDisplay from "../../components/modelization/DetailedModelizationDisplay";
 import ErrorBox from "../../components/shared/ErrorBox";
 import Spinner from "../../components/shared/Spinner";
 import useModelization from "../../hooks/modelization/useModelization";
@@ -42,14 +42,14 @@ const Modelization = () => {
             </div>
           }
         >
-          <ModelizationDisplay
+          <DetailedModelizationDisplay
             modelRef={modelRef}
             orbitRef={orbitRef}
             modelPath={modelPath}
             texturePath={texturePath}
             isAutoRotateOn={isAutoRotateOn}
           />
-          <ModelizationControls
+          <DetailedModelizationControls
             isAutoRotateOn={isAutoRotateOn}
             toggleAutoRotate={toggleAutoRotate}
             resetOrbitPosition={resetOrbitPosition}

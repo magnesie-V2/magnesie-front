@@ -1,46 +1,37 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Canvas } from "@react-three/fiber";
+import { useQuery } from "react-query";
+import ModelizationsDiplay from "../../components/home/ModelizationsDisplay";
+import ErrorBox from "../../components/shared/ErrorBox";
+import Spinner from "../../components/shared/Spinner";
+import { getModelizations } from "../../services/services";
 
-const Content = () => {
-  const ref = useRef<any>();
-  useFrame(
-    () =>
-      (ref.current.rotation.x =
-        ref.current.rotation.y =
-        ref.current.rotation.z +=
-          0.005)
-  );
+const Home = () => {
+  const {
+    data: modelizations,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery<Modelization[]>("modelizations", getModelizations);
+
+  if (isLoading) {
+    return <Spinner text="Chargement des modélisations..." />;
+  }
+
+  if (isError) {
+    return <ErrorBox error={error as string} refetch={refetch} />;
+  }
+
   return (
-    <group ref={ref}>
-      <mesh position={[-2, 0, 0]}>
-        <dodecahedronBufferGeometry />
-        <meshStandardMaterial roughness={0.75} emissive="#404057" />
-      </mesh>
-      <mesh position={[0, -2, -3]}>
-        <torusKnotGeometry args={[1, 0.2, 32, 100]} />
-        <meshStandardMaterial roughness={0.75} emissive="#404057" />
-      </mesh>
-      <mesh position={[2, 0, 0]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial roughness={0.75} emissive="#404057" />
-      </mesh>
-    </group>
-  );
-};
-//https://threejs.org/examples/webgl_interactive_cubes_ortho.html
-//https://threejs.org/examples/webgl_interactive_cubes.html
-const Home = () => (
-  <Link to="/modelization/myModelization">
-    <div className="h-4/5">
-      <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5] }}>
-        <pointLight color="indianred" />
-        <pointLight position={[10, 10, -10]} color="orange" />
-        <pointLight position={[-10, -10, 10]} color="lightblue" />
-        <Content />
+    <div className="h-5/6 mt-2">
+      <Canvas camera={{ position: [0, 0, 10] }}>
+        <pointLight color="white" />
+        <pointLight position={[20, 20, -20]} color="white" />
+        <pointLight position={[-20, -20, 20]} color="white" />
+        <ModelizationsDiplay modelizations={modelizations || []} />
       </Canvas>
     </div>
-  </Link>
-);
+  );
+};
 
 export default Home;
