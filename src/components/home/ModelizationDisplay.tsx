@@ -1,31 +1,37 @@
 import { Html } from "@react-three/drei";
-import { Suspense, useRef } from "react";
+import { useThree } from "@react-three/fiber";
+import { Suspense, useMemo, useRef } from "react";
 import { getRandomPosition } from "../../utils";
 import TexturedPlyModel from "../modelization/TexturedPlyModel";
 
 type ModelizationDisplayProps = {
-  modelPath: string;
-  texturePath: string;
+  modelization: Modelization;
 };
 
-const ModelizationDisplay = ({
-  modelPath,
-  texturePath,
-}: ModelizationDisplayProps) => {
+const ModelizationDisplay = ({ modelization }: ModelizationDisplayProps) => {
   const modelRef = useRef<any>();
-  const position = getRandomPosition();
+  const { viewport } = useThree();
+  const position = useMemo(
+    () => getRandomPosition(viewport.width, viewport.height),
+    [viewport.height, viewport.width]
+  );
+  const { name, modelPath, texturePath } = modelization;
   return (
     <Suspense
       fallback={
         <mesh position={position}>
-          <Html
-            style={{
-              backgroundColor:
-                "#" + ((Math.random() * 0xffffff) << 0).toString(16),
-            }}
-            className="rounded-xl p-2 text-white font-bold text-center animate-pulse"
-          >
-            Loading modelization...
+          <Html>
+            <div
+              onClick={() => console.log("hello")}
+              style={{
+                backgroundColor:
+                  "#" + ((Math.random() * 0xffffff) << 0).toString(16),
+              }}
+              className="rounded-xl p-2 text-white font-bold text-center animate-pulse cursor-pointer"
+            >
+              <p>{name}</p>
+              <p>Loading...</p>
+            </div>
           </Html>
         </mesh>
       }

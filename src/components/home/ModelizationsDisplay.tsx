@@ -1,6 +1,4 @@
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import { getRandomPosition } from "../../utils";
+import useModelizations from "../../hooks/home/useModelizations";
 import ModelizationDisplay from "./ModelizationDisplay";
 
 type ModelizationsDisplayProps = {
@@ -18,33 +16,21 @@ const OBJECTS = [
 ];
 
 const ModelizationsDiplay = ({ modelizations }: ModelizationsDisplayProps) => {
-  const groupRef = useRef<any>();
-  useFrame(
-    () =>
-      (groupRef.current.rotation.x =
-        groupRef.current.rotation.y =
-        groupRef.current.rotation.z +=
-          0.001)
-  );
-  const fillerObjects = Array.from({ length: 4 }, () => OBJECTS).flat();
+  const { groupRef, fillerObjects } = useModelizations(OBJECTS);
   return (
     <group ref={groupRef}>
       {fillerObjects.map((fillerObject, index) => (
-        <mesh key={index} position={getRandomPosition()}>
-          {fillerObject}
+        <mesh key={index} position={fillerObject.position}>
+          {fillerObject.object}
           <meshStandardMaterial
             roughness={0.5}
-            color={Math.random() * 0xffffff}
             emissive="#404057"
+            color={fillerObject.color}
           />
         </mesh>
       ))}
       {modelizations.map((modelization, index) => (
-        <ModelizationDisplay
-          key={index}
-          modelPath={modelization.modelPath}
-          texturePath={modelization.texturePath}
-        />
+        <ModelizationDisplay key={index} modelization={modelization} />
       ))}
     </group>
   );

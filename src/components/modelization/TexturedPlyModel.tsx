@@ -26,7 +26,9 @@ const TexturedPlyModel = ({
     <mesh
       ref={modelRef}
       geometry={ply}
-      scale={scaleToScreen ? [1, 1, 1] : [4 / radius, 4 / radius, 4 / radius]}
+      scale={
+        scaleToScreen ? [1, 1, 1] : [1.5 / radius, 1.5 / radius, 1.5 / radius]
+      }
       position={position || [0, 0, 0]}
     >
       <meshStandardMaterial map={texture} flatShading />

@@ -45,7 +45,9 @@ export const getModelization = (modelizationID: string | undefined) => {
       // });
       let object =
         modelizationID === "bronze_sculpture" ||
-        modelizationID === "climbing_wall"
+        modelizationID === "horse" ||
+        modelizationID === "dragon" ||
+        modelizationID === "bunny"
           ? modelizationID
           : "castle";
       resolve({
@@ -67,14 +69,24 @@ export const getModelizations = () => {
           texturePath: `${FOLDER}/castle/${PNG_FILE}`,
         },
         {
+          name: "Horse",
+          modelPath: `${FOLDER}/horse/${PLY_FILE}`,
+          texturePath: `${FOLDER}/horse/${PNG_FILE}`,
+        },
+        {
+          name: "Bunny",
+          modelPath: `${FOLDER}/bunny/${PLY_FILE}`,
+          texturePath: `${FOLDER}/bunny/${PNG_FILE}`,
+        },
+        {
+          name: "Dragon",
+          modelPath: `${FOLDER}/dragon/${PLY_FILE}`,
+          texturePath: `${FOLDER}/dragon/${PNG_FILE}`,
+        },
+        {
           name: "Bronze Sculpture",
           modelPath: `${FOLDER}/bronze_sculpture/${PLY_FILE}`,
           texturePath: `${FOLDER}/bronze_sculpture/${PNG_FILE}`,
-        },
-        {
-          name: "Climbing wall",
-          modelPath: `${FOLDER}/climbing_wall/${PLY_FILE}`,
-          texturePath: `${FOLDER}/climbing_wall/${PNG_FILE}`,
         },
       ]);
     }, 500)
