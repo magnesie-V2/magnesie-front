@@ -7,6 +7,7 @@ type TexturedPlyModelProps = {
   texturePath: string;
   scaleToScreen?: boolean;
   position?: Vector3;
+  handleClick?: () => void;
 };
 
 const TexturedPlyModel = ({
@@ -15,6 +16,7 @@ const TexturedPlyModel = ({
   texturePath,
   scaleToScreen,
   position,
+  handleClick,
 }: TexturedPlyModelProps) => {
   const { ply, texture, radius } = useTexturedPlyModel(
     modelRef,
@@ -30,6 +32,7 @@ const TexturedPlyModel = ({
         scaleToScreen ? [1, 1, 1] : [1.5 / radius, 1.5 / radius, 1.5 / radius]
       }
       position={position || [0, 0, 0]}
+      onClick={handleClick}
     >
       <meshStandardMaterial map={texture} flatShading />
     </mesh>

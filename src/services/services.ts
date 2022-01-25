@@ -64,27 +64,27 @@ export const getModelizations = () => {
     setTimeout(() => {
       resolve([
         {
-          name: "Castle",
+          name: "castle",
           modelPath: `${FOLDER}/castle/${PLY_FILE}`,
           texturePath: `${FOLDER}/castle/${PNG_FILE}`,
         },
         {
-          name: "Horse",
+          name: "horse",
           modelPath: `${FOLDER}/horse/${PLY_FILE}`,
           texturePath: `${FOLDER}/horse/${PNG_FILE}`,
         },
         {
-          name: "Bunny",
+          name: "bunny",
           modelPath: `${FOLDER}/bunny/${PLY_FILE}`,
           texturePath: `${FOLDER}/bunny/${PNG_FILE}`,
         },
         {
-          name: "Dragon",
+          name: "dragon",
           modelPath: `${FOLDER}/dragon/${PLY_FILE}`,
           texturePath: `${FOLDER}/dragon/${PNG_FILE}`,
         },
         {
-          name: "Bronze Sculpture",
+          name: "bronze_sculpture",
           modelPath: `${FOLDER}/bronze_sculpture/${PLY_FILE}`,
           texturePath: `${FOLDER}/bronze_sculpture/${PNG_FILE}`,
         },

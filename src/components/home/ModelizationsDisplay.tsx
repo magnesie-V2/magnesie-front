@@ -1,8 +1,10 @@
+import { NavigateFunction } from "react-router";
 import useModelizations from "../../hooks/home/useModelizations";
 import ModelizationDisplay from "./ModelizationDisplay";
 
 type ModelizationsDisplayProps = {
   modelizations: Modelization[];
+  navigate: NavigateFunction;
 };
 
 const OBJECTS = [
@@ -15,7 +17,10 @@ const OBJECTS = [
   <boxGeometry args={[1, 1, 1]} />,
 ];
 
-const ModelizationsDiplay = ({ modelizations }: ModelizationsDisplayProps) => {
+const ModelizationsDiplay = ({
+  modelizations,
+  navigate,
+}: ModelizationsDisplayProps) => {
   const { groupRef, fillerObjects } = useModelizations(OBJECTS);
   return (
     <group ref={groupRef}>
@@ -30,7 +35,11 @@ const ModelizationsDiplay = ({ modelizations }: ModelizationsDisplayProps) => {
         </mesh>
       ))}
       {modelizations.map((modelization, index) => (
-        <ModelizationDisplay key={index} modelization={modelization} />
+        <ModelizationDisplay
+          key={index}
+          modelization={modelization}
+          navigate={navigate}
+        />
       ))}
     </group>
   );

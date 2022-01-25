@@ -1,11 +1,13 @@
 import { Canvas } from "@react-three/fiber";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router";
 import ModelizationsDiplay from "../../components/home/ModelizationsDisplay";
 import ErrorBox from "../../components/shared/ErrorBox";
 import Spinner from "../../components/shared/Spinner";
 import { getModelizations } from "../../services/services";
 
 const Home = () => {
+  const navigate = useNavigate();
   const {
     data: modelizations,
     isLoading,
@@ -28,7 +30,10 @@ const Home = () => {
         <pointLight color="white" />
         <pointLight position={[20, 20, -20]} color="white" />
         <pointLight position={[-20, -20, 20]} color="white" />
-        <ModelizationsDiplay modelizations={modelizations || []} />
+        <ModelizationsDiplay
+          modelizations={modelizations || []}
+          navigate={navigate}
+        />
       </Canvas>
     </div>
   );

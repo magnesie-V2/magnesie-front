@@ -1,31 +1,36 @@
 import { Html } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
-import { Suspense, useMemo, useRef } from "react";
-import { getRandomPosition } from "../../utils";
+import { Suspense } from "react";
+import { NavigateFunction } from "react-router";
+import useModelAndFallback from "../../hooks/home/useModelAndFallback";
 import TexturedPlyModel from "../modelization/TexturedPlyModel";
 
 type ModelizationDisplayProps = {
   modelization: Modelization;
+  navigate: NavigateFunction;
 };
 
-const ModelizationDisplay = ({ modelization }: ModelizationDisplayProps) => {
-  const modelRef = useRef<any>();
-  const { viewport } = useThree();
-  const position = useMemo(
-    () => getRandomPosition(viewport.width, viewport.height),
-    [viewport.height, viewport.width]
-  );
-  const { name, modelPath, texturePath } = modelization;
+const ModelizationDisplay = ({
+  modelization,
+  navigate,
+}: ModelizationDisplayProps) => {
+  const {
+    modelRef,
+    name,
+    modelPath,
+    texturePath,
+    position,
+    backgroundColor,
+    handleClick,
+  } = useModelAndFallback(modelization, navigate);
   return (
     <Suspense
       fallback={
         <mesh position={position}>
           <Html>
             <div
-              onClick={() => console.log("hello")}
+              onClick={handleClick}
               style={{
-                backgroundColor:
-                  "#" + ((Math.random() * 0xffffff) << 0).toString(16),
+                backgroundColor,
               }}
               className="rounded-xl p-2 text-white font-bold text-center animate-pulse cursor-pointer"
             >
@@ -41,6 +46,7 @@ const ModelizationDisplay = ({ modelization }: ModelizationDisplayProps) => {
         texturePath={texturePath}
         modelRef={modelRef}
         position={position}
+        handleClick={handleClick}
       />
     </Suspense>
   );
