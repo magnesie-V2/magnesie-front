@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Home from "./pages/home/Home";
 import Modelization from "./pages/modelization/Modelization";
@@ -7,17 +7,11 @@ import NewModelization from "./pages/new-modelization/NewModelization";
 const App = () => (
   <BrowserRouter>
     <Header />
-    <Switch>
-      <Route path="/new-modelization">
-        <NewModelization />
-      </Route>
-      <Route path="/modelization/:id">
-        <Modelization />
-      </Route>
-      <Route path="*">
-        <Home />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route path="/new-modelization" element={<NewModelization />} />
+      <Route path="/modelization/:id" element={<Modelization />} />
+      <Route path="*" element={<Home />} />
+    </Routes>
   </BrowserRouter>
 );
 

@@ -1,43 +1,42 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Canvas } from "@react-three/fiber";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router";
+import ModelizationsDiplay from "../../components/home/ModelizationsDisplay";
+import ErrorBox from "../../components/shared/ErrorBox";
+import Spinner from "../../components/shared/Spinner";
+import { getModelizations } from "../../services/services";
 
-const Dodecahedron = ({ position }: { position: number[] }) => (
-  <mesh position={position}>
-    <dodecahedronBufferGeometry />
-    <meshStandardMaterial roughness={0.75} emissive="#404057" />
-  </mesh>
-);
+const Home = () => {
+  const navigate = useNavigate();
+  const {
+    data: modelizations,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery<Modelization[]>("modelizations", getModelizations);
 
-const Content = () => {
-  const ref = useRef<any>();
-  useFrame(
-    () =>
-      (ref.current.rotation.x =
-        ref.current.rotation.y =
-        ref.current.rotation.z +=
-          0.005)
-  );
+  if (isLoading) {
+    return <Spinner text="Chargement des modélisations..." />;
+  }
+
+  if (isError) {
+    return <ErrorBox error={error as string} refetch={refetch} />;
+  }
+
   return (
-    <group ref={ref}>
-      <Dodecahedron position={[-2, 0, 0]} />
-      <Dodecahedron position={[0, -2, -3]} />
-      <Dodecahedron position={[2, 0, 0]} />
-    </group>
-  );
-};
-
-const Home = () => (
-  <Link to="/modelization/myModelization">
-    <div className="h-4/5">
-      <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5] }}>
-        <pointLight color="indianred" />
-        <pointLight position={[10, 10, -10]} color="orange" />
-        <pointLight position={[-10, -10, 10]} color="lightblue" />
-        <Content />
+    <div className="h-5/6 mt-2">
+      <Canvas camera={{ position: [0, 0, 10] }}>
+        <pointLight color="white" />
+        <pointLight position={[20, 20, -20]} color="white" />
+        <pointLight position={[-20, -20, 20]} color="white" />
+        <ModelizationsDiplay
+          modelizations={modelizations || []}
+          navigate={navigate}
+        />
       </Canvas>
     </div>
-  </Link>
-);
+  );
+};
 
 export default Home;
