@@ -5,6 +5,13 @@ const FOLDER = "/models";
 const PLY_FILE = "scene_dense_mesh_refine_texture.ply";
 const PNG_FILE = "scene_dense_mesh_refine_texture.png";
 
+export const getFutureWeather = () =>
+  axios.get(
+    "https://api.openweathermap.org/data/2.5/onecall?lat=47.282247&lon=-1.521323&exclude=current,minutely,daily,alerts&appid=" +
+      process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY +
+      "&units=metric&lang=fr"
+  );
+
 export const postNewModelizationForm = ({
   name,
   greenEnergy,
@@ -54,6 +61,8 @@ export const getModelization = (modelizationID: string | undefined) => {
         name: modelizationID as string,
         modelPath: `${FOLDER}/${object}/${PLY_FILE}`,
         texturePath: `${FOLDER}/${object}/${PNG_FILE}`,
+        duration: Math.floor(Math.random() * (10000 - 1000 + 1) + 1000),
+        consumption: Math.floor(Math.random() * (150 - 50 + 1) + 50),
       });
     }, 500)
   );
@@ -67,26 +76,36 @@ export const getModelizations = () => {
           name: "castle",
           modelPath: `${FOLDER}/castle/${PLY_FILE}`,
           texturePath: `${FOLDER}/castle/${PNG_FILE}`,
+          duration: 0,
+          consumption: 0,
         },
         {
           name: "horse",
           modelPath: `${FOLDER}/horse/${PLY_FILE}`,
           texturePath: `${FOLDER}/horse/${PNG_FILE}`,
+          duration: 0,
+          consumption: 0,
         },
         {
           name: "bunny",
           modelPath: `${FOLDER}/bunny/${PLY_FILE}`,
           texturePath: `${FOLDER}/bunny/${PNG_FILE}`,
+          duration: 0,
+          consumption: 0,
         },
         {
           name: "dragon",
           modelPath: `${FOLDER}/dragon/${PLY_FILE}`,
           texturePath: `${FOLDER}/dragon/${PNG_FILE}`,
+          duration: 0,
+          consumption: 0,
         },
         {
           name: "bronze_sculpture",
           modelPath: `${FOLDER}/bronze_sculpture/${PLY_FILE}`,
           texturePath: `${FOLDER}/bronze_sculpture/${PNG_FILE}`,
+          duration: 0,
+          consumption: 0,
         },
       ]);
     }, 500)

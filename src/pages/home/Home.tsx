@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import ModelizationsDiplay from "../../components/home/ModelizationsDisplay";
 import ErrorBox from "../../components/shared/ErrorBox";
 import Spinner from "../../components/shared/Spinner";
-import { getModelizations } from "../../services/services";
+import { getModelizations } from "../../services";
 
 const Home = () => {
   const navigate = useNavigate();

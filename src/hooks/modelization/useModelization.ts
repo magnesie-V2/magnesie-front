@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 // @ts-ignore
 import { PLYExporter } from "three/examples/jsm/exporters/PLYExporter.js";
-import { getModelization } from "../../services/services";
+import { getModelization } from "../../services";
 
 const useModelization = () => {
   const { id } = useParams();

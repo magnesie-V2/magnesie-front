@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import DetailedModelizationControls from "../../components/modelization/DetailedModelizationControls";
 import DetailedModelizationDisplay from "../../components/modelization/DetailedModelizationDisplay";
+import ModelizationHeader from "../../components/modelization/ModelizationHeader";
 import ErrorBox from "../../components/shared/ErrorBox";
 import Spinner from "../../components/shared/Spinner";
 import useModelization from "../../hooks/modelization/useModelization";
@@ -28,10 +29,15 @@ const Modelization = () => {
     return <ErrorBox error={error as string} refetch={refetch} />;
   }
 
-  const { name, modelPath, texturePath } = modelization as Modelization;
+  const { name, modelPath, texturePath, duration, consumption } =
+    modelization as Modelization;
   return (
     <div className="flex flex-col items-center h-5/6">
-      <p className="text-3xl mt-8 text-center px-4">{name}</p>
+      <ModelizationHeader
+        name={name}
+        duration={duration}
+        consumption={consumption}
+      />
       <div className="h-3/5 w-5/6 sm:w-3/4 xl:w-4/6 mt-8 rounded-xl bg-gray-200 relative">
         <Suspense
           fallback={
