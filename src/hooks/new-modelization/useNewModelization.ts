@@ -2,7 +2,7 @@ import { message } from "antd";
 import { UploadChangeParam, UploadFile } from "antd/lib/upload/interface";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useMutation } from "react-query";
-import { postNewModelizationForm } from "../../services/services";
+import { postNewModelizationForm } from "../../services";
 
 const INITIAL_GREEN_ENERGY = 50;
 
