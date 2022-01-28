@@ -7,7 +7,9 @@ const PNG_FILE = "scene_dense_mesh_refine_texture.png";
 
 export const getFutureWeather = () =>
   axios.get(
-    "https://api.openweathermap.org/data/2.5/onecall?lat=47.282247&lon=-1.521323&exclude=current,minutely,daily,alerts&appid=fb4652ef7522904ceb3ed90ac482e943&units=metric&lang=fr"
+    "https://api.openweathermap.org/data/2.5/onecall?lat=47.282247&lon=-1.521323&exclude=current,minutely,daily,alerts&appid=" +
+      process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY +
+      "&units=metric&lang=fr"
   );
 
 export const postNewModelizationForm = ({
