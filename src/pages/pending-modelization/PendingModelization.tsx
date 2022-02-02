@@ -2,11 +2,7 @@ import { useParams } from "react-router-dom";
 import Terminal from "../../components/pending-modelization/Terminal";
 
 const PendingModelization = () => {
-  // clean terminal code
-  // terminal width on small devices
-  // terminal height and scroll on overflow
-  // terminal with logs
-  // graph grafana seduce with production ? Seduce API
+  // graph grafana seduce with production ? Insert Iframe
   const { id } = useParams();
   console.log(id);
   const modelizationName = "Turtle";

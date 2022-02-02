@@ -4,11 +4,11 @@ type TerminalProps = {
 
 const Terminal = ({ lines }: TerminalProps) => (
   <div className="flex justify-center items-center mt-16">
-    <div className=" text-gray-300 rounded-lg shadow-lg overflow-hidden text-xs">
+    <div className="max-w-screen-sm mx-4 text-gray-300 rounded-lg shadow-lg overflow-hidden text-xs">
       <div className="h-8 flex items-center p-2 justify-between bg-gradient-to-b from-gray-700 to-gray-800">
         <div className="flex items-center gap-1">
           <svg
-            className="w-5 h-5 cursor-pointer"
+            className="w-5 h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -26,11 +26,12 @@ const Terminal = ({ lines }: TerminalProps) => (
           </span>
         </div>
       </div>
-      <div className="py-4 bg-gray-900 font-mono">
+      <div className="max-h-104 overflow-y-auto px-8 py-4 bg-gray-900 font-mono">
         <span>
-          {lines.map((line, index) => (
+          {[...lines, "..."].map((line, index) => (
             <div
-              className={`px-8 py-0.5 ${
+              key={index}
+              className={`text-justify py-0.5 ${
                 index % 2 === 0 ? "text-blue-300" : "text-green-300"
               }`}
             >
