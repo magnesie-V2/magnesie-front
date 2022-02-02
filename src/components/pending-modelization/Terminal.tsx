@@ -1,8 +1,8 @@
 type TerminalProps = {
-  lines: string[];
+  logs: string[];
 };
 
-const Terminal = ({ lines }: TerminalProps) => (
+const Terminal = ({ logs }: TerminalProps) => (
   <div className="flex justify-center items-center mt-16">
     <div className="max-w-screen-sm mx-4 text-gray-300 rounded-lg shadow-lg overflow-hidden text-xs">
       <div className="h-8 flex items-center p-2 justify-between bg-gradient-to-b from-gray-700 to-gray-800">
@@ -28,7 +28,7 @@ const Terminal = ({ lines }: TerminalProps) => (
       </div>
       <div className="max-h-104 overflow-y-auto px-8 py-4 bg-gray-900 font-mono">
         <span>
-          {[...lines, "..."].map((line, index) => (
+          {[...logs, "..."].map((line, index) => (
             <div
               key={index}
               className={`text-justify py-0.5 ${
