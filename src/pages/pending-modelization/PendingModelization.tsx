@@ -4,7 +4,6 @@ import Spinner from "../../components/shared/Spinner";
 import usePendingModelization from "../../hooks/pending-modelization/usePendingModelization";
 
 const PendingModelization = () => {
-  // graph grafana seduce with production ? Insert Iframe
   const { pendingModelization, isLoading, isError, error, refetch } =
     usePendingModelization();
 
