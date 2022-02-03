@@ -40,6 +40,11 @@ export const postNewModelizationForm = ({
   });
 };
 
+export const getPendingModelizations = () =>
+  new Promise<string[]>((resolve) =>
+    setTimeout(() => resolve(["turtle", "cat", "dog"]), 500)
+  );
+
 export const getPendingModelization = (modelizationID: string) => {
   const pendingModelization = {
     name: modelizationID,

@@ -30,3 +30,18 @@ body {
 .ant-upload.ant-upload-select-picture-card:hover {
   border-color: #047857;
 }
+
+.ant-btn:only-child {
+  border-radius: 0.25rem !important;
+  padding-top: 1.438rem;
+  padding-bottom: 1.438rem;
+}
+
+ant-btn::selection {
+  background-color: white;
+}
+
+.ant-btn:hover,
+.ant-btn:focus {
+  color: black;
+}
