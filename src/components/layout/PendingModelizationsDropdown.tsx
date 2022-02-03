@@ -23,7 +23,7 @@ const PendingModelizationsDropdown = () => {
         }),
       ]}
       overlay={
-        <Menu className="p-0">
+        <Menu className="p-0 rounded-md">
           {isLoading ? (
             <Menu.Item>Chargement...</Menu.Item>
           ) : (
@@ -31,7 +31,7 @@ const PendingModelizationsDropdown = () => {
               <>
                 <Menu.Item
                   key={index}
-                  className="border-b text-center font-bold"
+                  className="border-b text-center font-bold py-3 text-base"
                 >
                   <Link to={`/pending-modelization/${pendingModelization}`}>
                     {pendingModelization}
