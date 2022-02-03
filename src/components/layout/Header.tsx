@@ -1,6 +1,7 @@
 import { MdHome, MdOutlineAddCircle } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo-white.png";
+import PendingModelizationsDropdown from "./PendingModelizationsDropdown";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -13,17 +14,20 @@ const Header = () => {
           Magnesie V2
         </span>
       </div>
-      <Link
-        to={isHome ? "/new-modelization" : "/"}
-        className="bg-white hover:bg-gray-200 text-black hover:text-black font-bold py-2 px-4 rounded inline-flex items-center"
-      >
-        {isHome ? (
-          <MdOutlineAddCircle className="mr-3" size="26" />
-        ) : (
-          <MdHome className="mr-3" size="26" />
-        )}
-        <p>{isHome ? "Nouvelle modélisation" : "Accueil"}</p>
-      </Link>
+      <div className="flex flex-col sm:flex-row items-center">
+        <Link
+          to={isHome ? "/new-modelization" : "/"}
+          className="w-fit mb-2 sm:mb-0 sm:mr-4 bg-white hover:bg-gray-200 text-black hover:text-black font-bold py-2.5 px-4 rounded inline-flex items-center"
+        >
+          {isHome ? (
+            <MdOutlineAddCircle className="mr-3" size="26" />
+          ) : (
+            <MdHome className="mr-3" size="26" />
+          )}
+          <p>{isHome ? "Nouvelle modélisation" : "Accueil"}</p>
+        </Link>
+        <PendingModelizationsDropdown />
+      </div>
     </nav>
   );
 };

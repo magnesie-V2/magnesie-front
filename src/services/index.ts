@@ -40,6 +40,37 @@ export const postNewModelizationForm = ({
   });
 };
 
+export const getPendingModelizations = () =>
+  new Promise<string[]>((resolve) =>
+    setTimeout(() => resolve(["turtle", "cat", "dog"]), 500)
+  );
+
+export const getPendingModelization = (modelizationID: string) => {
+  const pendingModelization = {
+    name: modelizationID,
+    logs: [
+      "03/22 08:52:50 TRACE :.......event_establishSessionSend: found",
+      "outgoing if=9.67.116.98 through forward engine 03/22 08:52:50",
+      "TRACE :......rsvp_event_mapSession: Session=9.67.116.99:1047:6",
+      "exists 12 03/22 08:52:50 EVENT :.....api_reader: api request",
+      "SENDER 13 03/22 08:52:50 INFO :.......init_policyAPI: papi_debug:",
+      "Entering 03/22 08:52:50 INFO :.......init_policyAPI: papi_debug:",
+      "papiLogFunc = 98681F0 papiUserValue = 0 03/22 08:52:50 INFO",
+      ":.......init_policyAPI: papi_debug: Exiting 03/22 08:52:50 INFO",
+      ":.......init_policyAPI: APIInitialize: Entering 03/22 08:52:50",
+      "INFO :.......init_policyAPI: open_socket: Entering 03/22 08:52:50",
+      "INFO :.......init_policyAPI: open_socket: Exiting 03/22 08:52:50",
+      "INFO :.......init_policyAPI: APIInitialize: ApiHandle = 98BDFB0",
+      "connfd = 22 03/22 08:52:50 INFO :.......init_policyAPI:",
+      "APIInitialize: Exiting 03/22 08:52:50 INFO :.......init_policyAPI:",
+      "RegisterWithPolicyAPI: Entering",
+    ],
+  };
+  return new Promise<PendingModelization>((resolve) =>
+    setTimeout(() => resolve(pendingModelization), 500)
+  );
+};
+
 export const getModelization = (modelizationID: string | undefined) => {
   return new Promise<Modelization>((resolve) =>
     setTimeout(() => {
