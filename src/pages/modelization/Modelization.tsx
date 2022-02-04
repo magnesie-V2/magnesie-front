@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import ConsumptionChart from "../../components/modelization/ConsumptionChart";
 import DetailedModelizationControls from "../../components/modelization/DetailedModelizationControls";
 import DetailedModelizationDisplay from "../../components/modelization/DetailedModelizationDisplay";
 import ModelizationHeader from "../../components/modelization/ModelizationHeader";
@@ -32,7 +33,7 @@ const Modelization = () => {
   const { name, modelPath, texturePath, duration, consumption } =
     modelization as Modelization;
   return (
-    <div className="flex flex-col items-center h-5/6">
+    <div className="flex flex-col items-center">
       <ModelizationHeader
         name={name}
         duration={duration}
@@ -62,6 +63,9 @@ const Modelization = () => {
             exportModel={exportModel}
           />
         </Suspense>
+      </div>
+      <div className="w-5/6 sm:w-3/4 xl:w-4/6 mt-8 p-1 rounded-xl bg-gray-200">
+        <ConsumptionChart />
       </div>
     </div>
   );

@@ -28,16 +28,14 @@ const PendingModelizationsDropdown = () => {
             <Menu.Item>Chargement...</Menu.Item>
           ) : (
             pendingModelizations?.map((pendingModelization, index) => (
-              <>
-                <Menu.Item
-                  key={index}
-                  className="border-b text-center font-bold py-3 text-base"
-                >
-                  <Link to={`/pending-modelization/${pendingModelization}`}>
-                    {pendingModelization}
-                  </Link>
-                </Menu.Item>
-              </>
+              <Menu.Item
+                key={index}
+                className="border-b text-center font-bold py-3 text-base"
+              >
+                <Link to={`/pending-modelization/${pendingModelization}`}>
+                  {pendingModelization}
+                </Link>
+              </Menu.Item>
             ))
           )}
         </Menu>
