@@ -94,6 +94,11 @@ export const getModelization = (modelizationID: string | undefined) => {
         texturePath: `${FOLDER}/${object}/${PNG_FILE}`,
         duration: Math.floor(Math.random() * (10000 - 1000 + 1) + 1000),
         consumption: Math.floor(Math.random() * (150 - 50 + 1) + 50),
+        detailedConsumption: [
+          3.11, 3.86, 9.64, 25.8, 47.1, 74.3, 99.11, 108, 135, 122, 128, 144,
+          133, 119, 104, 87, 61, 23, 10, 4.75, 4.25, 3.5, 3.45, 3.53, 3.22,
+          3.66,
+        ],
       });
     }, 500)
   );
@@ -109,6 +114,7 @@ export const getModelizations = () => {
           texturePath: `${FOLDER}/castle/${PNG_FILE}`,
           duration: 0,
           consumption: 0,
+          detailedConsumption: [],
         },
         {
           name: "horse",
@@ -116,6 +122,7 @@ export const getModelizations = () => {
           texturePath: `${FOLDER}/horse/${PNG_FILE}`,
           duration: 0,
           consumption: 0,
+          detailedConsumption: [],
         },
         {
           name: "bunny",
@@ -123,6 +130,7 @@ export const getModelizations = () => {
           texturePath: `${FOLDER}/bunny/${PNG_FILE}`,
           duration: 0,
           consumption: 0,
+          detailedConsumption: [],
         },
         {
           name: "dragon",
@@ -130,6 +138,7 @@ export const getModelizations = () => {
           texturePath: `${FOLDER}/dragon/${PNG_FILE}`,
           duration: 0,
           consumption: 0,
+          detailedConsumption: [],
         },
         {
           name: "bronze_sculpture",
@@ -137,6 +146,7 @@ export const getModelizations = () => {
           texturePath: `${FOLDER}/bronze_sculpture/${PNG_FILE}`,
           duration: 0,
           consumption: 0,
+          detailedConsumption: [],
         },
       ]);
     }, 500)

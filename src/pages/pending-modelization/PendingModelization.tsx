@@ -18,7 +18,7 @@ const PendingModelization = () => {
   const { name, logs } = pendingModelization as PendingModelization;
   return (
     <div className="flex flex-col items-center h-5/6">
-      <p className="text-3xl mt-16 text-center px-4">{name}</p>
+      <p className="text-3xl mt-8 sm:mt-16 text-center px-4">{name}</p>
       <Terminal logs={logs} />
     </div>
   );

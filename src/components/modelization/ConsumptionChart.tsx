@@ -1,12 +1,11 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const data = [
-  108, 135, 122, 128, 144, 133, 119, 104, 87, 61, 23, 10, 4.75, 4.25, 3.5, 3.45,
-  3.53, 3.22, 3.66,
-];
-//https://api.highcharts.com/highcharts/plotOptions.line
-const ConsumptionChart = () => (
+type ConsumptionChartProps = {
+  detailedConsumption: number[];
+};
+
+const ConsumptionChart = ({ detailedConsumption }: ConsumptionChartProps) => (
   <HighchartsReact
     highcharts={Highcharts}
     options={{
@@ -30,7 +29,7 @@ const ConsumptionChart = () => (
       series: [
         {
           name: "Consommation",
-          data: data,
+          data: detailedConsumption,
           color: "#047857",
         },
       ],
