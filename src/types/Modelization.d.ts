@@ -4,4 +4,5 @@ type Modelization = {
   texturePath: string;
   duration: number;
   consumption: number;
+  detailedConsumption: number[];
 };

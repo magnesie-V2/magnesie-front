@@ -16,7 +16,7 @@ const ModelizationHeader = ({
   return (
     <>
       <p className="text-3xl mt-8 text-center px-4">{name}</p>
-      <div className="flex flex-col items-center mt-8 sm:w-3/4 xl:w-4/6">
+      <div className="flex flex-col items-center mt-8 sm:w-3/4 xl:w-4/6 px-4">
         <p className="text-xl font-bold text-center">
           Durée de la modélisation : {hours} heures {minutes} minutes {seconds}{" "}
           secondes

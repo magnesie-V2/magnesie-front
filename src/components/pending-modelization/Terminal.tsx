@@ -3,7 +3,7 @@ type TerminalProps = {
 };
 
 const Terminal = ({ logs }: TerminalProps) => (
-  <div className="flex justify-center items-center mt-16">
+  <div className="flex justify-center items-center mt-8 sm:mt-16 pb-2">
     <div className="max-w-screen-sm mx-4 text-gray-300 rounded-lg shadow-lg overflow-hidden text-xs">
       <div className="h-8 flex items-center p-2 justify-between bg-gradient-to-b from-gray-700 to-gray-800">
         <div className="flex items-center gap-1">

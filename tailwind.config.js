@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {
+      height: {
+        "screen/2": "50vh",
+      },
       maxHeight: {
         104: "26rem",
       },

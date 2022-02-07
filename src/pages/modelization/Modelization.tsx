@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import ConsumptionChart from "../../components/modelization/ConsumptionChart";
 import DetailedModelizationControls from "../../components/modelization/DetailedModelizationControls";
 import DetailedModelizationDisplay from "../../components/modelization/DetailedModelizationDisplay";
 import ModelizationHeader from "../../components/modelization/ModelizationHeader";
@@ -29,16 +30,22 @@ const Modelization = () => {
     return <ErrorBox error={error as string} refetch={refetch} />;
   }
 
-  const { name, modelPath, texturePath, duration, consumption } =
-    modelization as Modelization;
+  const {
+    name,
+    modelPath,
+    texturePath,
+    duration,
+    consumption,
+    detailedConsumption,
+  } = modelization as Modelization;
   return (
-    <div className="flex flex-col items-center h-5/6">
+    <div className="flex flex-col items-center pb-2">
       <ModelizationHeader
         name={name}
         duration={duration}
         consumption={consumption}
       />
-      <div className="h-3/5 w-5/6 sm:w-3/4 xl:w-4/6 mt-8 rounded-xl bg-gray-200 relative">
+      <div className="h-screen/2 w-5/6 sm:w-3/4 xl:w-4/6 mt-8 rounded-xl bg-gray-200 relative">
         <Suspense
           fallback={
             <div className="h-full flex justify-center items-center">
@@ -62,6 +69,9 @@ const Modelization = () => {
             exportModel={exportModel}
           />
         </Suspense>
+      </div>
+      <div className="w-5/6 sm:w-3/4 xl:w-4/6 mt-8 p-1 rounded-xl bg-gray-200">
+        <ConsumptionChart detailedConsumption={detailedConsumption} />
       </div>
     </div>
   );
