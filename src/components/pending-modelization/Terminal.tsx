@@ -1,5 +1,5 @@
 type TerminalProps = {
-  logs: string[];
+  logs: string;
 };
 
 const Terminal = ({ logs }: TerminalProps) => (
@@ -26,12 +26,12 @@ const Terminal = ({ logs }: TerminalProps) => (
           </span>
         </div>
       </div>
-      <div className="max-h-104 overflow-y-auto px-8 py-4 bg-gray-900 font-mono">
+      <div className="max-h-104 overflow-y-auto px-2 sm:px-8 py-1 sm:py-4 bg-gray-900 font-mono">
         <span>
-          {[...logs, "..."].map((line, index) => (
+          {[...logs.split("\n"), "..."].map((line, index) => (
             <div
               key={index}
-              className={`text-justify py-0.5 ${
+              className={`text-terminal-small sm:text-terminal text-justify py-0.5 ${
                 index % 2 === 0 ? "text-blue-300" : "text-green-300"
               }`}
             >

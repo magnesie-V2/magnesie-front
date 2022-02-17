@@ -22,7 +22,7 @@ const ModelizationHeader = ({
           secondes
         </p>
         <p className="text-xl font-bold mt-4 text-center">
-          Consommation électrique : {consumption} Watt
+          Consommation : {consumption} Joules
         </p>
       </div>
     </>

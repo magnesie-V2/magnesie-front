@@ -2,15 +2,19 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 type ConsumptionChartProps = {
-  detailedConsumption: number[];
+  timeValues: number[];
+  consumptionValues: number[];
 };
 
-const ConsumptionChart = ({ detailedConsumption }: ConsumptionChartProps) => (
+const ConsumptionChart = ({
+  timeValues,
+  consumptionValues,
+}: ConsumptionChartProps) => (
   <HighchartsReact
     highcharts={Highcharts}
     options={{
       chart: {
-        type: "line",
+        type: "column",
         zoomType: "x",
       },
       title: {
@@ -20,6 +24,7 @@ const ConsumptionChart = ({ detailedConsumption }: ConsumptionChartProps) => (
         title: {
           text: "Temps (secondes)",
         },
+        categories: timeValues.map((xValue) => `${xValue - 5} - ${xValue}`),
       },
       yAxis: {
         title: {
@@ -29,7 +34,7 @@ const ConsumptionChart = ({ detailedConsumption }: ConsumptionChartProps) => (
       series: [
         {
           name: "Consommation",
-          data: detailedConsumption,
+          data: consumptionValues,
           color: "#047857",
         },
       ],

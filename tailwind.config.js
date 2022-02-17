@@ -12,6 +12,10 @@ module.exports = {
       width: {
         fit: "fit-content",
       },
+      fontSize: {
+        terminal: ["12px", "12px"],
+        "terminal-small": ["9px", "12px"],
+      },
     },
   },
   variants: {

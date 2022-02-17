@@ -6,6 +6,7 @@ import ModelizationHeader from "../../components/modelization/ModelizationHeader
 import ErrorBox from "../../components/shared/ErrorBox";
 import Spinner from "../../components/shared/Spinner";
 import useModelization from "../../hooks/modelization/useModelization";
+import usePower from "../../hooks/power/usePower";
 
 const Modelization = () => {
   const {
@@ -21,6 +22,8 @@ const Modelization = () => {
     modelRef,
     exportModel,
   } = useModelization();
+  const { timeValues, duration, consumptionValues, totalConsumption } =
+    usePower(modelization ? modelization.power : "");
 
   if (isLoading) {
     return <Spinner text="Chargement de la modélisation..." />;
@@ -30,20 +33,13 @@ const Modelization = () => {
     return <ErrorBox error={error as string} refetch={refetch} />;
   }
 
-  const {
-    name,
-    modelPath,
-    texturePath,
-    duration,
-    consumption,
-    detailedConsumption,
-  } = modelization as Modelization;
+  const { name, modelPath, texturePath } = modelization as Modelization;
   return (
     <div className="flex flex-col items-center pb-2">
       <ModelizationHeader
         name={name}
         duration={duration}
-        consumption={consumption}
+        consumption={totalConsumption}
       />
       <div className="h-screen/2 w-5/6 sm:w-3/4 xl:w-4/6 mt-8 rounded-xl bg-gray-200 relative">
         <Suspense
@@ -71,7 +67,10 @@ const Modelization = () => {
         </Suspense>
       </div>
       <div className="w-5/6 sm:w-3/4 xl:w-4/6 mt-8 p-1 rounded-xl bg-gray-200">
-        <ConsumptionChart detailedConsumption={detailedConsumption} />
+        <ConsumptionChart
+          timeValues={timeValues}
+          consumptionValues={consumptionValues}
+        />
       </div>
     </div>
   );

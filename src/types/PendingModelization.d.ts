@@ -1,4 +1,6 @@
 type PendingModelization = {
   name: string;
-  logs: string[];
+  status: "InProgress" | "Finished" | "Error";
+  logs: string;
+  power: string;
 };

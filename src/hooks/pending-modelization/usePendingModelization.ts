@@ -10,10 +10,31 @@ const usePendingModelization = () => {
     isError,
     error,
     refetch,
-  } = useQuery(["pendingModelization", id], () =>
-    getPendingModelization(id as string)
+  } = useQuery(
+    ["pendingModelization", id],
+    () => getPendingModelization(id as string),
+    { refetchInterval: 500, refetchIntervalInBackground: true }
   );
-  return { pendingModelization, isLoading, isError, error, refetch };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case "Finished":
+        return "modélisation terminée";
+      case "Error":
+        return "modélisation échouée";
+      default:
+        return "modélisation en cours";
+    }
+  };
+
+  return {
+    pendingModelization,
+    isLoading,
+    isError,
+    error,
+    refetch,
+    getStatusText,
+  };
 };
 
 export default usePendingModelization;
