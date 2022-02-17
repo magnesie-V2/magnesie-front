@@ -11,7 +11,7 @@ const App = () => (
     <Routes>
       <Route path="/new-modelization" element={<NewModelization />} />
       <Route
-        path="/pending-modelization/:id"
+        path="/pending-modelization/:id/:name"
         element={<PendingModelization />}
       />
       <Route path="/modelization/:id" element={<Modelization />} />

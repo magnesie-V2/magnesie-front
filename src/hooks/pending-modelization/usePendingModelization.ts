@@ -3,9 +3,9 @@ import { useParams } from "react-router";
 import { getPendingModelization } from "../../services";
 
 const usePendingModelization = () => {
-  const { id } = useParams();
+  const { id, name } = useParams();
   const {
-    data: pendingModelization,
+    data: response,
     isLoading,
     isError,
     refetch,
@@ -27,7 +27,7 @@ const usePendingModelization = () => {
   };
 
   return {
-    pendingModelization,
+    pendingModelization: { ...response?.data, name },
     isLoading,
     isError,
     refetch,

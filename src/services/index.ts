@@ -1,5 +1,5 @@
 import { UploadFile } from "antd/lib/upload/interface";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const FOLDER = "/models";
 const PLY_FILE = "scene_dense_mesh_refine_texture.ply";
@@ -40,16 +40,14 @@ export const postNewModelizationForm = ({
   });
 };
 
-export const getPendingModelizations = () =>
-  new Promise<string[]>((resolve) =>
-    setTimeout(() => resolve(["turtle", "cat", "dog"]), 500)
-  );
+export const getPendingModelizations = (): Promise<
+  AxiosResponse<{ id: string; name: string }[]>
+> => axios.get("http://localhost:7880//new_submissions");
 
 export const getPendingModelization = (
   modelizationID: string
-): Promise<PendingModelization> => {
-  return axios.get("http://0.0.0.0:7879/job/report/1");
-};
+): Promise<AxiosResponse<PendingModelization>> =>
+  axios.get(`http://0.0.0.0:7879/job/report/${modelizationID}`);
 
 export const getModelization = (modelizationID: string | undefined) => {
   return new Promise<Modelization>((resolve) =>

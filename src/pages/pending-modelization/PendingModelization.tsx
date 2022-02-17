@@ -9,7 +9,7 @@ const PendingModelization = () => {
   const { pendingModelization, isLoading, isError, refetch, getStatusText } =
     usePendingModelization();
   const { timeValues, consumptionValues } = usePower(
-    pendingModelization ? pendingModelization.power : ""
+    pendingModelization?.power || ""
   );
 
   if (isLoading) {

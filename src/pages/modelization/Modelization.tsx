@@ -22,7 +22,7 @@ const Modelization = () => {
     exportModel,
   } = useModelization();
   const { timeValues, duration, consumptionValues, totalConsumption } =
-    usePower(modelization ? modelization.power : "");
+    usePower(modelization?.power || "");
 
   if (isLoading) {
     return <Spinner text="Chargement de la modélisation..." />;
