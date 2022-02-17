@@ -13,7 +13,10 @@ const Home = () => {
     isLoading,
     isError,
     refetch,
-  } = useQuery<Modelization[]>("modelizations", getModelizations);
+  } = useQuery<Modelization[]>("modelizations", getModelizations, {
+    refetchInterval: 150000,
+    refetchIntervalInBackground: true,
+  });
 
   if (isLoading) {
     return <Spinner text="Chargement des modélisations..." />;

@@ -8,7 +8,11 @@ import { getPendingModelizations } from "../../services";
 const PendingModelizationsDropdown = () => {
   const { data: response, isLoading } = useQuery(
     "pendingModelizations",
-    getPendingModelizations
+    getPendingModelizations,
+    {
+      refetchInterval: 10000,
+      refetchIntervalInBackground: true,
+    }
   );
   return (
     <Dropdown.Button
@@ -26,6 +30,8 @@ const PendingModelizationsDropdown = () => {
         <Menu className="p-0 rounded-md">
           {isLoading ? (
             <Menu.Item>Chargement...</Menu.Item>
+          ) : response?.data.length === 0 ? (
+            <Menu.Item>Aucune modélisation en cours</Menu.Item>
           ) : (
             response?.data.map((pendingModelization, index) => (
               <Menu.Item

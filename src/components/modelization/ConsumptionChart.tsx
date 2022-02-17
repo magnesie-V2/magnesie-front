@@ -24,7 +24,9 @@ const ConsumptionChart = ({
         title: {
           text: "Temps (secondes)",
         },
-        categories: timeValues.map((xValue) => `${xValue - 5} - ${xValue}`),
+        categories: timeValues.map((xValue) =>
+          xValue === 0 ? `0 - 5` : `${xValue - 5} - ${xValue}`
+        ),
       },
       yAxis: {
         title: {
