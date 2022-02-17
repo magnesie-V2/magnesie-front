@@ -11,7 +11,6 @@ const useModelization = () => {
     data: modelization,
     isLoading,
     isError,
-    error,
     refetch,
   } = useQuery<Modelization>(["modelization", id], () => getModelization(id));
 
@@ -47,7 +46,6 @@ const useModelization = () => {
     modelization,
     isLoading,
     isError,
-    error,
     refetch,
     isAutoRotateOn,
     toggleAutoRotate,

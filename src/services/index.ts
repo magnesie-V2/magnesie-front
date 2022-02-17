@@ -45,30 +45,10 @@ export const getPendingModelizations = () =>
     setTimeout(() => resolve(["turtle", "cat", "dog"]), 500)
   );
 
-export const getPendingModelization = (modelizationID: string) => {
-  const pendingModelization = {
-    name: modelizationID,
-    logs: [
-      "03/22 08:52:50 TRACE :.......event_establishSessionSend: found",
-      "outgoing if=9.67.116.98 through forward engine 03/22 08:52:50",
-      "TRACE :......rsvp_event_mapSession: Session=9.67.116.99:1047:6",
-      "exists 12 03/22 08:52:50 EVENT :.....api_reader: api request",
-      "SENDER 13 03/22 08:52:50 INFO :.......init_policyAPI: papi_debug:",
-      "Entering 03/22 08:52:50 INFO :.......init_policyAPI: papi_debug:",
-      "papiLogFunc = 98681F0 papiUserValue = 0 03/22 08:52:50 INFO",
-      ":.......init_policyAPI: papi_debug: Exiting 03/22 08:52:50 INFO",
-      ":.......init_policyAPI: APIInitialize: Entering 03/22 08:52:50",
-      "INFO :.......init_policyAPI: open_socket: Entering 03/22 08:52:50",
-      "INFO :.......init_policyAPI: open_socket: Exiting 03/22 08:52:50",
-      "INFO :.......init_policyAPI: APIInitialize: ApiHandle = 98BDFB0",
-      "connfd = 22 03/22 08:52:50 INFO :.......init_policyAPI:",
-      "APIInitialize: Exiting 03/22 08:52:50 INFO :.......init_policyAPI:",
-      "RegisterWithPolicyAPI: Entering",
-    ],
-  };
-  return new Promise<PendingModelization>((resolve) =>
-    setTimeout(() => resolve(pendingModelization), 500)
-  );
+export const getPendingModelization = (
+  modelizationID: string
+): Promise<PendingModelization> => {
+  return axios.get("http://0.0.0.0:7879/job/report/1");
 };
 
 export const getModelization = (modelizationID: string | undefined) => {
@@ -92,13 +72,8 @@ export const getModelization = (modelizationID: string | undefined) => {
         name: modelizationID as string,
         modelPath: `${FOLDER}/${object}/${PLY_FILE}`,
         texturePath: `${FOLDER}/${object}/${PNG_FILE}`,
-        duration: Math.floor(Math.random() * (10000 - 1000 + 1) + 1000),
-        consumption: Math.floor(Math.random() * (150 - 50 + 1) + 50),
-        detailedConsumption: [
-          3.11, 3.86, 9.64, 25.8, 47.1, 74.3, 99.11, 108, 135, 122, 128, 144,
-          133, 119, 104, 87, 61, 23, 10, 4.75, 4.25, 3.5, 3.45, 3.53, 3.22,
-          3.66,
-        ],
+        power:
+          "5.000215534,201.98\n10.000403961,217.09\n15.000605187,188.57\n20.000785061,215.81\n25.000970505,196.06\n30.001194376,200.08\n35.001389456,209.29\n40.001556273,397.14\n45.001707553,518.60\n50.001857624,525.00\n55.002005826,626.44\n60.002153895,625.78\n65.002308751,628.67\n70.002463884,629.73\n75.002613217,631.15\n80.002770205,629.56\n",
       });
     }, 500)
   );
@@ -112,41 +87,36 @@ export const getModelizations = () => {
           name: "castle",
           modelPath: `${FOLDER}/castle/${PLY_FILE}`,
           texturePath: `${FOLDER}/castle/${PNG_FILE}`,
-          duration: 0,
-          consumption: 0,
-          detailedConsumption: [],
+          power:
+            "5.000215534,201.98\n10.000403961,217.09\n15.000605187,188.57\n20.000785061,215.81\n25.000970505,196.06\n30.001194376,200.08\n35.001389456,209.29\n40.001556273,397.14\n45.001707553,518.60\n50.001857624,525.00\n55.002005826,626.44\n60.002153895,625.78\n65.002308751,628.67\n70.002463884,629.73\n75.002613217,631.15\n80.002770205,629.56\n",
         },
         {
           name: "horse",
           modelPath: `${FOLDER}/horse/${PLY_FILE}`,
           texturePath: `${FOLDER}/horse/${PNG_FILE}`,
-          duration: 0,
-          consumption: 0,
-          detailedConsumption: [],
+          power:
+            "5.000215534,201.98\n10.000403961,217.09\n15.000605187,188.57\n20.000785061,215.81\n25.000970505,196.06\n30.001194376,200.08\n35.001389456,209.29\n40.001556273,397.14\n45.001707553,518.60\n50.001857624,525.00\n55.002005826,626.44\n60.002153895,625.78\n65.002308751,628.67\n70.002463884,629.73\n75.002613217,631.15\n80.002770205,629.56\n",
         },
         {
           name: "bunny",
           modelPath: `${FOLDER}/bunny/${PLY_FILE}`,
           texturePath: `${FOLDER}/bunny/${PNG_FILE}`,
-          duration: 0,
-          consumption: 0,
-          detailedConsumption: [],
+          power:
+            "5.000215534,201.98\n10.000403961,217.09\n15.000605187,188.57\n20.000785061,215.81\n25.000970505,196.06\n30.001194376,200.08\n35.001389456,209.29\n40.001556273,397.14\n45.001707553,518.60\n50.001857624,525.00\n55.002005826,626.44\n60.002153895,625.78\n65.002308751,628.67\n70.002463884,629.73\n75.002613217,631.15\n80.002770205,629.56\n",
         },
         {
           name: "dragon",
           modelPath: `${FOLDER}/dragon/${PLY_FILE}`,
           texturePath: `${FOLDER}/dragon/${PNG_FILE}`,
-          duration: 0,
-          consumption: 0,
-          detailedConsumption: [],
+          power:
+            "5.000215534,201.98\n10.000403961,217.09\n15.000605187,188.57\n20.000785061,215.81\n25.000970505,196.06\n30.001194376,200.08\n35.001389456,209.29\n40.001556273,397.14\n45.001707553,518.60\n50.001857624,525.00\n55.002005826,626.44\n60.002153895,625.78\n65.002308751,628.67\n70.002463884,629.73\n75.002613217,631.15\n80.002770205,629.56\n",
         },
         {
           name: "bronze_sculpture",
           modelPath: `${FOLDER}/bronze_sculpture/${PLY_FILE}`,
           texturePath: `${FOLDER}/bronze_sculpture/${PNG_FILE}`,
-          duration: 0,
-          consumption: 0,
-          detailedConsumption: [],
+          power:
+            "5.000215534,201.98\n10.000403961,217.09\n15.000605187,188.57\n20.000785061,215.81\n25.000970505,196.06\n30.001194376,200.08\n35.001389456,209.29\n40.001556273,397.14\n45.001707553,518.60\n50.001857624,525.00\n55.002005826,626.44\n60.002153895,625.78\n65.002308751,628.67\n70.002463884,629.73\n75.002613217,631.15\n80.002770205,629.56\n",
         },
       ]);
     }, 500)

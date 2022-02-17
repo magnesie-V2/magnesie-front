@@ -8,7 +8,6 @@ const usePendingModelization = () => {
     data: pendingModelization,
     isLoading,
     isError,
-    error,
     refetch,
   } = useQuery(
     ["pendingModelization", id],
@@ -31,7 +30,6 @@ const usePendingModelization = () => {
     pendingModelization,
     isLoading,
     isError,
-    error,
     refetch,
     getStatusText,
   };

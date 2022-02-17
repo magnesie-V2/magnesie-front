@@ -4,15 +4,14 @@ import Spinner from "../../components/shared/Spinner";
 import useFutureWeather from "../../hooks/new-modelization/useFutureWeather";
 
 const NewModelization = () => {
-  const { isWeatherGood, isLoading, isError, error, refetch } =
-    useFutureWeather();
+  const { isWeatherGood, isLoading, isError, refetch } = useFutureWeather();
 
   if (isLoading) {
     return <Spinner text="Chargement des données météo..." />;
   }
 
   if (isError) {
-    return <ErrorBox error={error as string} refetch={refetch} />;
+    return <ErrorBox refetch={refetch} />;
   }
 
   return <NewModelizationForm isWeatherGood={isWeatherGood} />;

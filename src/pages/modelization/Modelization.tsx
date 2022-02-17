@@ -13,7 +13,6 @@ const Modelization = () => {
     modelization,
     isLoading,
     isError,
-    error,
     refetch,
     isAutoRotateOn,
     toggleAutoRotate,
@@ -30,7 +29,7 @@ const Modelization = () => {
   }
 
   if (isError) {
-    return <ErrorBox error={error as string} refetch={refetch} />;
+    return <ErrorBox refetch={refetch} />;
   }
 
   const { name, modelPath, texturePath } = modelization as Modelization;

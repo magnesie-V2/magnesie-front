@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
+        fit: "fit-content",
         "screen/2": "50vh",
       },
       maxHeight: {

@@ -36,6 +36,7 @@ const ConsumptionChart = ({
           name: "Consommation",
           data: consumptionValues,
           color: "#047857",
+          animation: false,
         },
       ],
       credits: {

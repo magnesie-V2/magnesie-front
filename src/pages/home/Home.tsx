@@ -12,7 +12,6 @@ const Home = () => {
     data: modelizations,
     isLoading,
     isError,
-    error,
     refetch,
   } = useQuery<Modelization[]>("modelizations", getModelizations);
 
@@ -21,7 +20,7 @@ const Home = () => {
   }
 
   if (isError) {
-    return <ErrorBox error={error as string} refetch={refetch} />;
+    return <ErrorBox refetch={refetch} />;
   }
 
   return (

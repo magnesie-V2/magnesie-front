@@ -3,7 +3,7 @@ type TerminalProps = {
 };
 
 const Terminal = ({ logs }: TerminalProps) => (
-  <div className="flex justify-center items-center mt-8 sm:mt-16 pb-2">
+  <div className="flex justify-center items-center mt-8">
     <div className="max-w-screen-sm mx-4 text-gray-300 rounded-lg shadow-lg overflow-hidden text-xs">
       <div className="h-8 flex items-center p-2 justify-between bg-gradient-to-b from-gray-700 to-gray-800">
         <div className="flex items-center gap-1">
@@ -26,7 +26,7 @@ const Terminal = ({ logs }: TerminalProps) => (
           </span>
         </div>
       </div>
-      <div className="max-h-104 overflow-y-auto px-2 sm:px-8 py-1 sm:py-4 bg-gray-900 font-mono">
+      <div className="max-h-104 overflow-y-auto px-2 sm:px-8 py-1 sm:py-4 bg-gray-900 font-mono flex flex-col-reverse">
         <span>
           {[...logs.split("\n"), "..."].map((line, index) => (
             <div
