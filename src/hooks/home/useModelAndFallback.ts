@@ -9,7 +9,7 @@ const useModelAndFallback = (
 ) => {
   const modelRef = useRef<any>();
   const { viewport } = useThree();
-  const { name, modelPath, texturePath } = modelization;
+  const { id, modelPath, texturePath } = modelization;
   const position = useMemo(
     () => getRandomPosition(viewport.width, viewport.height),
     [viewport.height, viewport.width]
@@ -18,10 +18,9 @@ const useModelAndFallback = (
     () => "#" + ((Math.random() * 0xffffff) << 0).toString(16),
     []
   );
-  const handleClick = () => navigate(`/modelization/${name}`);
+  const handleClick = () => navigate(`/modelization/${id}`);
   return {
     modelRef,
-    name,
     modelPath,
     texturePath,
     position,

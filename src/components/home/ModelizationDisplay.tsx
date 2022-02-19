@@ -15,7 +15,6 @@ const ModelizationDisplay = ({
 }: ModelizationDisplayProps) => {
   const {
     modelRef,
-    name,
     modelPath,
     texturePath,
     position,
@@ -34,7 +33,7 @@ const ModelizationDisplay = ({
               }}
               className="rounded-xl p-2 text-white font-bold text-center animate-pulse cursor-pointer"
             >
-              <p>{name}</p>
+              <p>{modelization.name}</p>
               <p>Loading...</p>
             </div>
           </Html>

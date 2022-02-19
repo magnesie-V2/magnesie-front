@@ -4,6 +4,8 @@ import { useRef } from "react";
 // @ts-ignore
 import { PLYLoader } from "three/examples/jsm/loaders/PLYLoader";
 
+const RESULTS_ENDPOINT = "http://localhost:7881/files/results/";
+
 const useTexturedPlyModel = (
   modelRef: any,
   modelPath: string,
@@ -13,8 +15,8 @@ const useTexturedPlyModel = (
   const {
     size: { width, height },
   } = useThree();
-  const ply = useLoader(PLYLoader, modelPath);
-  const texture = useTexture(texturePath);
+  const ply = useLoader(PLYLoader, RESULTS_ENDPOINT + modelPath);
+  const texture = useTexture(RESULTS_ENDPOINT + texturePath);
   const hasBeenInitialized = useRef<boolean>(false);
   const radius = modelRef.current?.geometry.boundingSphere.radius;
   useFrame((state) => {

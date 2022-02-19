@@ -9,12 +9,12 @@ import { getModelizations } from "../../services";
 const Home = () => {
   const navigate = useNavigate();
   const {
-    data: modelizations,
+    data: response,
     isLoading,
     isError,
     refetch,
-  } = useQuery<Modelization[]>("modelizations", getModelizations, {
-    refetchInterval: 150000,
+  } = useQuery("modelizations", getModelizations, {
+    refetchInterval: 5000,
     refetchIntervalInBackground: true,
   });
 
@@ -33,7 +33,7 @@ const Home = () => {
         <pointLight position={[20, 20, -20]} color="white" />
         <pointLight position={[-20, -20, 20]} color="white" />
         <ModelizationsDiplay
-          modelizations={modelizations || []}
+          modelizations={response?.data || []}
           navigate={navigate}
         />
       </Canvas>
