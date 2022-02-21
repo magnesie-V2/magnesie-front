@@ -20,7 +20,6 @@ const DetailedModelizationDisplay = ({
   <Canvas orthographic>
     <ambientLight intensity={1} />
     <TexturedPlyModel
-      scaleToScreen
       modelRef={modelRef}
       modelPath={modelPath}
       texturePath={texturePath}

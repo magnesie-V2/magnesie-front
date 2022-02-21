@@ -9,8 +9,7 @@ const RESULTS_ENDPOINT = "http://localhost:7881/files/results/";
 const useTexturedPlyModel = (
   modelRef: any,
   modelPath: string,
-  texturePath: string,
-  scaleToScreen?: boolean
+  texturePath: string
 ) => {
   const {
     size: { width, height },
@@ -21,16 +20,14 @@ const useTexturedPlyModel = (
   const radius = modelRef.current?.geometry.boundingSphere.radius;
   useFrame((state) => {
     if (modelRef.current && !hasBeenInitialized.current) {
-      if (scaleToScreen) {
-        const zoom = Math.min(width / (radius * 2), height / (radius * 2));
-        state.camera.zoom = zoom;
-      }
+      const zoom = Math.min(width / (radius * 2), height / (radius * 2));
+      state.camera.zoom = zoom;
       modelRef.current.rotation.x += Math.PI;
       hasBeenInitialized.current = true;
       state.camera.updateProjectionMatrix();
     }
   });
-  return { ply, texture, radius };
+  return { ply, texture };
 };
 
 export default useTexturedPlyModel;
