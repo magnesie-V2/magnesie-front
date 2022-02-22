@@ -3,4 +3,5 @@ type PendingModelization = {
   status: "InProgress" | "Finished" | "Error";
   logs: string;
   power: string;
+  step: string;
 };

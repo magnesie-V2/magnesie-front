@@ -26,12 +26,24 @@ const usePendingModelization = () => {
     }
   };
 
+  const getProgressStatus = (status: string) => {
+    switch (status) {
+      case "Finished":
+        return "success";
+      case "Error":
+        return "exception";
+      default:
+        return "active";
+    }
+  };
+
   return {
     pendingModelization: { ...response?.data, name },
     isLoading,
     isError,
     refetch,
     getStatusText,
+    getProgressStatus,
   };
 };
 

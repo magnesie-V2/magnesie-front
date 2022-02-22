@@ -1,3 +1,4 @@
+import { Progress } from "antd";
 import ConsumptionChart from "../../components/modelization/ConsumptionChart";
 import Terminal from "../../components/pending-modelization/Terminal";
 import ErrorBox from "../../components/shared/ErrorBox";
@@ -6,8 +7,14 @@ import usePendingModelization from "../../hooks/pending-modelization/usePendingM
 import usePower from "../../hooks/power/usePower";
 
 const PendingModelization = () => {
-  const { pendingModelization, isLoading, isError, refetch, getStatusText } =
-    usePendingModelization();
+  const {
+    pendingModelization,
+    isLoading,
+    isError,
+    refetch,
+    getStatusText,
+    getProgressStatus,
+  } = usePendingModelization();
   const { timeValues, consumptionValues } = usePower(
     pendingModelization?.power || ""
   );
@@ -20,12 +27,24 @@ const PendingModelization = () => {
     return <ErrorBox refetch={refetch} />;
   }
 
-  const { name, status, logs } = pendingModelization as PendingModelization;
+  const { name, status, logs, step } =
+    pendingModelization as PendingModelization;
   return (
     <div className="flex flex-col items-center h-5/6 pb-2 h-fit">
       <p className="text-3xl mt-8 text-center px-4">
         {name} : {getStatusText(status)}
       </p>
+      <Progress
+        className="mt-8 w-2/3 lg:w-1/3"
+        strokeColor={{
+          from: "deepskyblue",
+          to: "limegreen",
+        }}
+        percent={
+          status === "Finished" ? 100 : Math.ceil((Number(step) / 18) * 100)
+        }
+        status={getProgressStatus(status)}
+      />
       <Terminal logs={logs} />
       <div className="w-5/6 sm:w-3/4 xl:w-4/6 mt-8 p-1 rounded-xl bg-gray-200">
         <ConsumptionChart
