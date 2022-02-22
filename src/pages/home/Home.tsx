@@ -14,7 +14,7 @@ const Home = () => {
     isError,
     refetch,
   } = useQuery("modelizations", getModelizations, {
-    refetchInterval: 5000,
+    refetchInterval: 1000,
     refetchIntervalInBackground: true,
   });
 

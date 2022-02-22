@@ -10,7 +10,7 @@ const PendingModelizationsDropdown = () => {
     "pendingModelizations",
     getPendingModelizations,
     {
-      refetchInterval: 10000,
+      refetchInterval: 1000,
       refetchIntervalInBackground: true,
     }
   );
