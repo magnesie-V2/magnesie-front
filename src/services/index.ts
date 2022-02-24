@@ -54,6 +54,11 @@ export const resumePendingModelization = (modelizationID: string) =>
 export const getModelizations = (): Promise<AxiosResponse<Modelization[]>> =>
   axios.get("http://localhost:7881/results");
 
+export const getPower = (
+  modelizationID: string
+): Promise<AxiosResponse<{ power: string }>> =>
+  axios.get(`http://localhost:7879/job/power/${modelizationID}`);
+
 export const getModelization = (modelizationID: string | undefined) => {
   return new Promise<Modelization>((resolve) =>
     setTimeout(() => {

@@ -3,16 +3,20 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 // @ts-ignore
 import { PLYExporter } from "three/examples/jsm/exporters/PLYExporter.js";
-import { getModelization } from "../../services";
+import { getModelization, getPower } from "../../services";
 
 const useModelization = () => {
   const { id } = useParams();
   const {
     data: modelization,
-    isLoading,
+    isLoading: isLoadingModelization,
     isError,
     refetch,
   } = useQuery<Modelization>(["modelization", id], () => getModelization(id));
+  const { data: powerResponse, isLoading: isLoadingPower } = useQuery(
+    ["power", id],
+    () => getPower(id || "")
+  );
 
   const [isAutoRotateOn, setIsAutoRotateOn] = useState(false);
   const toggleAutoRotate = () => {
@@ -44,7 +48,7 @@ const useModelization = () => {
 
   return {
     modelization,
-    isLoading,
+    isLoading: isLoadingModelization || isLoadingPower,
     isError,
     refetch,
     isAutoRotateOn,
@@ -53,6 +57,7 @@ const useModelization = () => {
     resetOrbitPosition,
     modelRef,
     exportModel,
+    power: powerResponse?.data.power,
   };
 };
 

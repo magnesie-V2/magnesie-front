@@ -20,9 +20,10 @@ const Modelization = () => {
     resetOrbitPosition,
     modelRef,
     exportModel,
+    power,
   } = useModelization();
   const { timeValues, duration, consumptionValues, totalConsumption } =
-    usePower(modelization?.power || "");
+    usePower(power || "");
 
   if (isLoading) {
     return <Spinner text="Chargement de la modélisation..." />;
