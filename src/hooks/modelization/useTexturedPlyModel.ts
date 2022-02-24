@@ -4,7 +4,8 @@ import { useRef } from "react";
 // @ts-ignore
 import { PLYLoader } from "three/examples/jsm/loaders/PLYLoader";
 
-const RESULTS_ENDPOINT = "http://localhost:7881/files/results/";
+// const RESULTS_ENDPOINT = "http://localhost:7881/files/results/";
+const RESULTS_ENDPOINT = "";
 
 const useTexturedPlyModel = (
   modelRef: any,

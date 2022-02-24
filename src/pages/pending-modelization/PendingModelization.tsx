@@ -1,5 +1,6 @@
 import { Progress } from "antd";
 import ConsumptionChart from "../../components/modelization/ConsumptionChart";
+import ModelizationControl from "../../components/pending-modelization/ModelizationControl";
 import Terminal from "../../components/pending-modelization/Terminal";
 import ErrorBox from "../../components/shared/ErrorBox";
 import Spinner from "../../components/shared/Spinner";
@@ -8,6 +9,7 @@ import usePower from "../../hooks/power/usePower";
 
 const PendingModelization = () => {
   const {
+    id,
     pendingModelization,
     isLoading,
     isError,
@@ -31,9 +33,12 @@ const PendingModelization = () => {
     pendingModelization as PendingModelization;
   return (
     <div className="flex flex-col items-center h-5/6 pb-2 h-fit">
-      <p className="text-3xl mt-8 text-center px-4">
-        {name} : {getStatusText(status)}
-      </p>
+      <div className="flex flex-row mt-8 items-center">
+        <p className="text-3xl px-4">
+          {name} : {getStatusText(status)}
+        </p>
+        <ModelizationControl id={id || ""} status={status} />
+      </div>
       <Progress
         className="mt-8 w-2/3 lg:w-1/3"
         strokeColor={{

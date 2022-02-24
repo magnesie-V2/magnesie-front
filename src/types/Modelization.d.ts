@@ -1,5 +1,5 @@
 type Modelization = {
-  id: string;
+  id: number;
   name: string;
   modelPath: string;
   texturePath: string;

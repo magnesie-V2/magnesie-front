@@ -38,6 +38,7 @@ const usePendingModelization = () => {
   };
 
   return {
+    id,
     pendingModelization: { ...response?.data, name },
     isLoading,
     isError,

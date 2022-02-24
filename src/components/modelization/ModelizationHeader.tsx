@@ -22,7 +22,8 @@ const ModelizationHeader = ({
           secondes
         </p>
         <p className="text-xl font-bold mt-4 text-center">
-          Consommation : {consumption} Joules
+          Consommation :{" "}
+          {consumption.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Joules
         </p>
       </div>
     </>
