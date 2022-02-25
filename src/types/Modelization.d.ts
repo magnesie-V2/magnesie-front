@@ -1,8 +1,7 @@
 type Modelization = {
+  id: number;
   name: string;
   modelPath: string;
   texturePath: string;
-  duration: number;
-  consumption: number;
-  detailedConsumption: number[];
+  power: string;
 };

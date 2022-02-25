@@ -9,19 +9,21 @@ import { getModelizations } from "../../services";
 const Home = () => {
   const navigate = useNavigate();
   const {
-    data: modelizations,
+    data: response,
     isLoading,
     isError,
-    error,
     refetch,
-  } = useQuery<Modelization[]>("modelizations", getModelizations);
+  } = useQuery("modelizations", getModelizations, {
+    refetchInterval: 1000,
+    refetchIntervalInBackground: true,
+  });
 
   if (isLoading) {
     return <Spinner text="Chargement des modélisations..." />;
   }
 
   if (isError) {
-    return <ErrorBox error={error as string} refetch={refetch} />;
+    return <ErrorBox refetch={refetch} />;
   }
 
   return (
@@ -31,7 +33,7 @@ const Home = () => {
         <pointLight position={[20, 20, -20]} color="white" />
         <pointLight position={[-20, -20, 20]} color="white" />
         <ModelizationsDiplay
-          modelizations={modelizations || []}
+          modelizations={response?.data || []}
           navigate={navigate}
         />
       </Canvas>

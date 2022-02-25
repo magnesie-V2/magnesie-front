@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 import { getPendingModelizations } from "../../services";
 
 const PendingModelizationsDropdown = () => {
-  const { data: pendingModelizations, isLoading } = useQuery(
+  const { data: response, isLoading } = useQuery(
     "pendingModelizations",
-    getPendingModelizations
+    getPendingModelizations,
+    {
+      refetchInterval: 1000,
+      refetchIntervalInBackground: true,
+    }
   );
   return (
     <Dropdown.Button
@@ -26,14 +30,18 @@ const PendingModelizationsDropdown = () => {
         <Menu className="p-0 rounded-md">
           {isLoading ? (
             <Menu.Item>Chargement...</Menu.Item>
+          ) : response?.data.length === 0 ? (
+            <Menu.Item>Aucune modélisation en cours</Menu.Item>
           ) : (
-            pendingModelizations?.map((pendingModelization, index) => (
+            response?.data.map((pendingModelization, index) => (
               <Menu.Item
                 key={index}
                 className="border-b text-center font-bold py-3 text-base"
               >
-                <Link to={`/pending-modelization/${pendingModelization}`}>
-                  {pendingModelization}
+                <Link
+                  to={`/pending-modelization/${pendingModelization.id}/${pendingModelization.name}`}
+                >
+                  {pendingModelization.name}
                 </Link>
               </Menu.Item>
             ))

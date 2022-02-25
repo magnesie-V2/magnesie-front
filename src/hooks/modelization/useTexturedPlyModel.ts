@@ -4,31 +4,31 @@ import { useRef } from "react";
 // @ts-ignore
 import { PLYLoader } from "three/examples/jsm/loaders/PLYLoader";
 
+// const RESULTS_ENDPOINT = "http://localhost:7881/files/results/";
+const RESULTS_ENDPOINT = "";
+
 const useTexturedPlyModel = (
   modelRef: any,
   modelPath: string,
-  texturePath: string,
-  scaleToScreen?: boolean
+  texturePath: string
 ) => {
   const {
     size: { width, height },
   } = useThree();
-  const ply = useLoader(PLYLoader, modelPath);
-  const texture = useTexture(texturePath);
+  const ply = useLoader(PLYLoader, RESULTS_ENDPOINT + modelPath);
+  const texture = useTexture(RESULTS_ENDPOINT + texturePath);
   const hasBeenInitialized = useRef<boolean>(false);
   const radius = modelRef.current?.geometry.boundingSphere.radius;
   useFrame((state) => {
     if (modelRef.current && !hasBeenInitialized.current) {
-      if (scaleToScreen) {
-        const zoom = Math.min(width / (radius * 2), height / (radius * 2));
-        state.camera.zoom = zoom;
-      }
+      const zoom = Math.min(width / (radius * 2), height / (radius * 2));
+      state.camera.zoom = zoom;
       modelRef.current.rotation.x += Math.PI;
       hasBeenInitialized.current = true;
       state.camera.updateProjectionMatrix();
     }
   });
-  return { ply, texture, radius };
+  return { ply, texture };
 };
 
 export default useTexturedPlyModel;

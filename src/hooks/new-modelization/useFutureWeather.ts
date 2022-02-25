@@ -8,7 +8,10 @@ const useFutureWeather = () => {
     isError,
     error,
     refetch,
-  } = useQuery("weather", getFutureWeather);
+  } = useQuery("weather", getFutureWeather, {
+    refetchInterval: 900000,
+    refetchIntervalInBackground: true,
+  });
   const isWeatherGood: boolean = weather?.data.hourly
     .slice(0, 3)
     .map(

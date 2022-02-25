@@ -1,39 +1,23 @@
-import { Vector3 } from "@react-three/fiber";
 import useTexturedPlyModel from "../../hooks/modelization/useTexturedPlyModel";
 
 type TexturedPlyModelProps = {
   modelRef: any;
   modelPath: string;
   texturePath: string;
-  scaleToScreen?: boolean;
-  position?: Vector3;
-  handleClick?: () => void;
 };
 
 const TexturedPlyModel = ({
   modelRef,
   modelPath,
   texturePath,
-  scaleToScreen,
-  position,
-  handleClick,
 }: TexturedPlyModelProps) => {
-  const { ply, texture, radius } = useTexturedPlyModel(
+  const { ply, texture } = useTexturedPlyModel(
     modelRef,
     modelPath,
-    texturePath,
-    scaleToScreen
+    texturePath
   );
   return (
-    <mesh
-      ref={modelRef}
-      geometry={ply}
-      scale={
-        scaleToScreen ? [1, 1, 1] : [1.5 / radius, 1.5 / radius, 1.5 / radius]
-      }
-      position={position || [0, 0, 0]}
-      onClick={handleClick}
-    >
+    <mesh ref={modelRef} geometry={ply} scale={[1, 1, 1]} position={[0, 0, 0]}>
       <meshStandardMaterial map={texture} flatShading />
     </mesh>
   );

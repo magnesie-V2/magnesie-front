@@ -11,10 +11,10 @@ const App = () => (
     <Routes>
       <Route path="/new-modelization" element={<NewModelization />} />
       <Route
-        path="/pending-modelization/:id"
+        path="/pending-modelization/:id/:name"
         element={<PendingModelization />}
       />
-      <Route path="/modelization/:id" element={<Modelization />} />
+      <Route path="/modelization/:id/:name" element={<Modelization />} />
       <Route path="*" element={<Home />} />
     </Routes>
   </BrowserRouter>

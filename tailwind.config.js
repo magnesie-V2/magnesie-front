@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
+        fit: "fit-content",
         "screen/2": "50vh",
       },
       maxHeight: {
@@ -11,6 +12,10 @@ module.exports = {
       },
       width: {
         fit: "fit-content",
+      },
+      fontSize: {
+        terminal: ["12px", "12px"],
+        "terminal-small": ["9px", "12px"],
       },
     },
   },
