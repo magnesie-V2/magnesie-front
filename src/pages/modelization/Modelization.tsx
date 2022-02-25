@@ -11,6 +11,7 @@ import usePower from "../../hooks/power/usePower";
 const Modelization = () => {
   const {
     modelization,
+    name,
     isLoading,
     isError,
     refetch,
@@ -33,11 +34,11 @@ const Modelization = () => {
     return <ErrorBox refetch={refetch} />;
   }
 
-  const { name, modelPath, texturePath } = modelization as Modelization;
+  const { modelPath, texturePath } = modelization as Modelization;
   return (
     <div className="flex flex-col items-center pb-2">
       <ModelizationHeader
-        name={name}
+        name={name || "Modélisation"}
         duration={duration}
         consumption={totalConsumption}
       />

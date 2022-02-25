@@ -6,7 +6,7 @@ import { PLYExporter } from "three/examples/jsm/exporters/PLYExporter.js";
 import { getModelization, getPower } from "../../services";
 
 const useModelization = () => {
-  const { id } = useParams();
+  const { id, name } = useParams();
   const {
     data: modelization,
     isLoading: isLoadingModelization,
@@ -48,6 +48,7 @@ const useModelization = () => {
 
   return {
     modelization,
+    name,
     isLoading: isLoadingModelization || isLoadingPower,
     isError,
     refetch,

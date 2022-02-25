@@ -17,7 +17,8 @@ const useModelAndFallback = (
     () => "#" + ((Math.random() * 0xffffff) << 0).toString(16),
     []
   );
-  const handleClick = () => navigate(`/modelization/${id}`);
+  const handleClick = () =>
+    navigate(`/modelization/${id}/${modelization.name}`);
   return {
     position,
     backgroundColor,
